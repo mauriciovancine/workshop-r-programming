@@ -1,0 +1,811 @@
+---
+title: "Manipulação de dados (II) e programação básica em R"
+subtitle: "NT265/NE441 - Análise de dados e apresentação de gráficos usando a linguagem R"
+author: "<br>[Maurício Vancine](https://mauriciovancine.github.io/)"
+date: "10/24/2024"
+date-format: long
+license: "Licença: [CC BY-NC-SA](https://creativecommons.org/licenses/by-nc-sa/4.0/deed.pt_BR)"
+format: 
+  revealjs:
+    theme: [custom.scss]
+    slide-number: c/t
+    show-slide-number: all
+    hash-type: number
+    preview-links: false
+    chalkboard: true
+    logo: "https://www.r-project.org/logo/Rlogo.svg"
+    execute:
+      echo: true
+      eval: true
+      warning: false
+      message: false
+editor: source
+lang: pt
+---
+
+```{r setup, include=FALSE}
+library(palmerpenguins)
+penguins_sem_na <- na.omit(penguins)
+```
+
+## Maurício Vancine
+
+::::: columns
+::: {.column width="40%"}
+<center>
+<br><br>
+![](img/avatar.png)
+</center>
+:::
+
+::: {.column width="60%"}
+-   Ecólogo e Doutor em Ecologia
+
+-   Pós-Doc em Ecologia Espacial (Mathias)
+
+-   Ecologia Espacial
+
+-   Modelagem Ecológica
+
+-   Análise de Dados Ecológicos e Geoespaciais
+
+-   Ecologia e Conservação de Anfíbios
+
+-   *Open source* \[R, QGIS, GRASS GIS, GNU/Linux, ...\]
+:::
+:::::
+
+## Análises Ecológicas no R (2022)
+
+::::: columns
+::: {.column width="40%"}
+<br>
+
+<center>
+<img src="img/aer.jpeg" href="https://analises-ecologicas.com/" style="width:90%"/>
+</center>
+:::
+
+::: {.column width="60%"}
+-   15 capítulos: linguagem R, tidyverse, perguntas em ecologia, análises univariadas, multivariadas e geoespaciais
+
+-   [bookdown](https://analises-ecologicas.com/)
+
+-   [PDF](https://canal6.com.br/livreacesso/livro/analises-ecologicas-no-r/)
+
+-   [Amazon](https://www.amazon.com.br/An%C3%A1lises-ecol%C3%B3gicas-Ferdo-Rodrigues-Silva/dp/857917564X/ref=sr_1_1?keywords=9788579175640&qid=1654379366&sr=8-1)
+
+-   [Código Fonte](https://github.com/paternogbc/livro_aer)
+
+-   [YouTube](https://www.youtube.com/channel/UCLSVSCnmvf2k6OoWZCnEO4w)
+:::
+:::::
+
+::: footer
+[Da Silva et al. (2022)](https://analises-ecologicas.com/)
+:::
+
+## Conteúdo
+
+::: panel-tabset
+## Revisão
+-   Revisão dos 10 principais conceitos em R
+-   Pseudocódigo
+
+## Explorar dados
+- Dados brutos
+- Observações e variáveis
+- Tabelas de frequência
+- Frequência absoluta e relativa
+- Função: `table`
+- Medidas de posição e dispersão
+- Funções: `apply`
+
+## Programação
+- Controle de fluxo
+- Condicional: `if`, `else` e `else if`
+- Estruturas de repetição
+- Laços: `for`, `while` e `repeat`
+- Comandos: `break` e `next`
+- Criar funções
+:::
+
+## IMPORTANTE!!!
+
+**Estamos num espaço seguro e amigável**
+
+Sintam-se à vontade para me interromper e tirar dúvidas
+
+<center>
+<img src="img/general_starwars_teamwork.png" style="width:50%"/>
+</center>
+
+::: footer
+[\@allison_horst](https://twitter.com/allison_horst)
+:::
+
+# Revisão
+
+## Revisão dos 10 principais conceitos em R
+
+<br><br>
+
+::::: columns
+::: {.column width="50%"}
+1.  Console
+2.  Script
+3.  Operadores
+4.  Objetos
+5.  Funções
+:::
+
+::: {.column width="50%\""}
+6.  Pacotes (*packages*)
+7.  Ajuda (*help*)
+8.  Ambiente (*environment*)
+9.  Diretorio
+10. Citações
+:::
+:::::
+
+## Pseudocódigo
+
+::: incremental
+-   Forma de **representar** algoritmos, funções ou outros processos de forma simplificada e intuitiva
+
+-   Escrito em **linguagem natural** e com elementos que se **assemelham** a uma linguagem de programação, mas não é realmente **executável**
+
+-   Ferramenta para a **comunicação de ideias de programação**, permitindo que programadores de diferentes níveis de habilidade compreendam e colaborem de maneira eficiente
+:::
+
+## Pseudocódigo
+
+::::: columns
+::: {.column width="40%\""}
+```{r eval=FALSE}
+# pseudocodigo
+0. listar pacotes
+1. importar dados
+2. limpar e ajustar dados
+3. analises estatisticas
+4. graficos
+5. exportar resultados
+```
+:::
+
+::: {.column width="70%\""}
+```{r eval=FALSE}
+# codigo
+
+# 0. listar pacotes
+library(tidyverse)
+library(palmerpenguins)
+
+# 1. importar dados
+penguins <- penguins_raw
+penguins
+
+# 2. limpar e ajustar dados
+penguins_clean <- na.omit(penguins)
+penguins_clean
+
+# 3. analises estatisticas
+cor.test(penguins_clean$bill_length_mm, penguins_clean$bill_depth_mm)
+
+# 4. graficos
+plot(penguins_clean$bill_length_mm, penguins_clean$bill_depth_mm, pch = 20)
+
+# 5. exportar resultados
+png("grafico_penguins.png")
+plot(penguins_clean$bill_length_mm, penguins_clean$bill_depth_mm, pch = 20)
+dev.off()
+```
+:::
+:::::
+
+# Dúvidas?
+
+## Para apresentar os próximos conceitos e funções, vamos usar dados de pinguins
+
+<center>
+<img src="img/package_palmerpenguins.png" style="width:35%"/>
+</center>
+
+::: footer
+[palmerpenguins](https://allisonhorst.github.io/palmerpenguins/)
+:::
+
+## palmerpenguins {.smaller}
+
+-   Dados de medidas de pinguins chamados `palmerpenguins`
+
+-   Dados coletados e disponibilizados pela [Dra. Kristen Gorman](https://www.uaf.edu/cfos/people/faculty/detail/kristen-gorman.php) e pela [Palmer Station, Antarctica LTER](https://pal.lternet.edu/), membro da [Long Term Ecological Research Network](https://lternet.edu/)
+
+-   Dois conjuntos de dados:
+
+-   `penguins_raw` (dados brutos)
+
+-   `penguins` (versão simplificada)
+
+![](img/lter_penguins.png){.absolute width="700" height="400" right="-50" top="300"}
+
+::: footer
+[palmerpenguins](https://allisonhorst.github.io/palmerpenguins/)
+:::
+
+## palmerpenguins
+
+```{r eval=FALSE}
+# instalar 
+install.packages("palmerpenguins")
+
+# carregar
+library(palmerpenguins)
+
+# ajuda dos dados
+?penguins
+?penguins_raw
+
+# remover nas
+penguins_sem_na <- na.omit(penguins)
+```
+
+```{r echo=FALSE}
+library(palmerpenguins)
+```
+
+![](img/culmen_depth.png){.absolute width="600" height="400" right="-100" top="300"}
+
+::: footer
+[palmerpenguins](https://allisonhorst.github.io/palmerpenguins/)
+:::
+
+# Análise exploratória de dados (AED)
+
+## Dados brutos
+
+- `palmerpenguins`
+
+```{r}
+head(penguins_sem_na, n = 10)
+```
+
+## Observações e variáveis
+
+- Cada linha dos dados é uma **observação**
+- Cada coluna dos dados é uma **variável**
+
+```{r}
+head(penguins_sem_na, n = 10)
+```
+
+## Tabela de frequência {.smaller}
+
+<br>
+
+-   **Dados brutos**: conjunto dos valores numéricos coletados na pesquisa
+
+-   **Classes**: intervalo de valores contínuos (0 \|--- 1)
+
+-   **Frequência absoluta (fi)**: número de vezes que uma observação aparece ou pertencente a um intervalo ou classe
+
+-   **Frequência total**: soma de todas as frequências absolutas (fi)
+
+-   **Frequência relativa (fri)**: valor da razão de cada frequência absoluta (fi) com a frequência total (somatório de fi)
+
+-   **Frequência acumulada (Fi)**: obtida somando (acumulando) os valores da frequência absoluta (fi)
+
+-   **Frequência relativa acumulada (Fri)**: obtida somando (acumulando) os valores da frequência relativa (fri)
+
+## Tabela de frequência
+
+<br>
+
+| Classes | Freq. absoluta (fi) | Freq. relativa (fri) | Freq. acumulada (Fi) | Freq. relativa acumulada (Fri) |
+|:-------------:|:-------------:|:-------------:|:-------------:|:-------------:|
+| 0\|---1 | 4 | 0.13 | 4 | 0.13 |
+| 1\|---2 | 8 | 0.26 | 12 | 0.39 |
+| 2\|---3 | 12 | 0.39 | 24 | 0.77 |
+| 3\|---4 | 7 | 0.23 | 31 | 1.00 |
+| Total | 31 | 1.00 |  |  |
+
+## table {.smaller}
+
+- Cria uma tabela de frequências para variáveis categóricas ou para a combinação de variáveis
+- **Sintaxe**:
+
+```{r eval=FALSE}
+table(..., exclude = NULL, useNA = "no")
+```
+
+- `...`: Vetores ou variáveis categóricas a serem tabuladas
+- `exclude`: Valores a serem excluídos (como NA)
+- `useNA`: Se e como contar valores faltantes ("no", "ifany", "always")
+
+- **Exemplo**
+```{r}
+# vetor categorico
+cores <- c("vermelho", "azul", "verde", "vermelho", "azul", "vermelho")
+
+# tabela de frequências
+table(cores)
+```
+
+## Tabela de frequência
+
+<br>
+
+**Frequência absoluta (fi)**
+```{r}
+table(penguins_sem_na$species)
+```
+
+## Tabela de frequência
+
+<br>
+
+**Frequência absoluta (fi)**
+```{r}
+table(penguins_sem_na$species)
+```
+
+<br>
+
+**Frequência relativa (fri)**
+```{r}
+prop.table(table(penguins_sem_na$species))
+```
+
+## Tabela de frequência
+
+<br>
+
+**Frequência absoluta (fi)**
+```{r}
+table(penguins_sem_na$species)
+```
+
+<br>
+
+**Frequência relativa (fri)**
+```{r}
+prop.table(table(penguins_sem_na$species)) * 100
+```
+
+## Tabela de frequência
+
+<br>
+
+**Frequência absoluta (fi)**
+```{r}
+table(penguins_sem_na$species)
+```
+
+<br>
+
+**Frequência relativa (fri)**
+```{r}
+round(prop.table(table(penguins_sem_na$species)), 4) * 100
+```
+
+## Tabela de frequência
+
+<br>
+
+**Frequência absoluta (fi)**
+```{r}
+table(penguins_sem_na$species, penguins_sem_na$island)
+```
+
+**Frequência relativa (fri)**
+```{r}
+round(prop.table(table(penguins_sem_na$species, penguins_sem_na$island)), 4) * 100
+```
+
+## Para se aprofundar
+
+<br>
+
+- `cumsum`: função para soma cumulativa
+- `cut`: função para dividir uma sequencia de valores em intervalos
+- [`janitor`](https://sfirke.github.io/janitor/index.html): pacote com funções para limpar bases de dados e fazer tabelas de frequência
+
+<center>
+<img src="img/janitor.png" style="width:15%"/>
+</center>
+
+# Dúvidas?
+
+## Medidas-resumo
+
+**Medidas de posição**
+
+<br>
+
+-   **Moda**: valor mais frequente das observações
+
+-   **Mediana**: valor que divide as observações ordenadas em duas partes iguais
+
+-   **Média aritmética**: soma das observações dividida pelo número de observações
+
+-   **Outras médias**: ponderada, geométrica e harmônica
+
+## Medidas-resumo
+
+**Medidas de dispersão**
+
+<br>
+
+-   **Variância**: medida de quantas observações diferem do valor central (média)
+
+-   **Desvio padrão**: raiz quadrada da variância (mantêm a mesma unidade de medida)
+
+-   **Erro padrão**: variação da média amostral em relação à média populacional (confiabilidade da média amostral)
+
+## apply {.smaller}
+
+- Função nativa no R que aplica uma função sobre as margens de um array ou matriz
+- **Sintaxe**:
+
+```{r eval=FALSE}
+apply(X, MARGIN, FUN, ...)
+```
+
+- `X`:  matriz, data frame ou array em que será aplicada a função
+- `MARGIN`: valor indica a margem onde a função será aplicada (1 = linhas ou 2 = colunas)
+- `FUN`: função que será aplicada
+
+- **Exemplo**:
+
+```{r}
+# matriz
+m <- matrix(1:9, nrow = 3, byrow = TRUE)
+m 
+
+# funcao sum nas linhas (MARGIN = 1)
+m_sum_row <- apply(m, 1, sum)
+m_sum_row
+```
+
+## apply {.smaller}
+
+- Função nativa no R que aplica uma função sobre as margens de um array ou matriz
+- **Sintaxe**:
+
+```{r eval=FALSE}
+apply(X, MARGIN, FUN, ...)
+```
+
+- `X`:  matriz, data frame ou array em que será aplicada a função
+- `MARGIN`: valor indica a margem onde a função será aplicada (1 = linhas ou 2 = colunas)
+- `FUN`: função que será aplicada
+
+- **Exemplo**:
+
+```{r}
+# matriz
+m <- matrix(1:9, nrow = 3, byrow = TRUE)
+m 
+
+# funcao sum nas colunas (MARGIN = 2)
+m_sum_col <- apply(m, 2, sum)
+m_sum_col
+```
+
+## Família apply {.smaller}
+
+- Aplicam uma função a elementos de estruturas de dados como vetores, listas, matrizes ou data frames de forma eficiente, evitando laços
+
+```{r eval=FALSE}
+apply(X, MARGIN, FUN, ...) # funcao sobre linhas ou colunas de uma matriz ou array
+lapply(X, FUN, ...) # funcao a cada elemento de uma lista ou vetor, retornando sempre uma lista
+sapply(X, FUN, ...) # similar a lapply, retornando matriz, vetor ou lista
+vapply(X, FUN, FUN.VALUE, ...) # similar a sapply, mas define o tipo de retorno
+tapply(X, INDEX, FUN, ...) # funcao sobre subsets de um vetor definido por fatores
+mapply(FUN, ..., MoreArgs = NULL) # funcao a múltiplos vetores ou listas de forma paralela 
+rapply(object, f, classes = "ANY", how = "replace") # funcao recursivamente a uma lista aninhada
+```
+
+- **Exemplos**:
+```{r}
+x <- list(a = 1:5, b = 6:10)
+lapply(x, mean)  # media de cada lista
+```
+
+```{r}
+tapply(1:10, rep(1:2, each = 5), sum)  # soma por grupo
+```
+
+## Medidas-resumo
+
+<br>
+
+**Média**
+
+```{r}
+# media por linhas
+apply(penguins_sem_na[1:20, 3:6], 1, mean)
+```
+
+<br>
+
+```{r}
+# media por colunas
+apply(penguins_sem_na[1:20, 3:6], 2, mean)
+```
+
+## Medidas-resumo
+
+<br>
+
+**Desvio padrão**
+
+```{r}
+# desvio padrao por linhas
+apply(penguins_sem_na[1:20, 3:6], 1, sd)
+```
+
+<br>
+
+```{r}
+# desvio padrao por colunas
+apply(penguins_sem_na[1:20, 3:6], 2, sd)
+```
+
+## Medidas-resumo
+
+<br>
+
+**Média**
+
+```{r}
+# media por especie
+tapply(penguins_sem_na$bill_length_mm, penguins_sem_na$species, mean)
+```
+
+<br>
+
+```{r}
+# media por ilha
+tapply(penguins_sem_na$bill_length_mm, penguins_sem_na$island, mean)
+```
+
+## Medidas-resumo
+
+<br>
+
+**Desvio padrão**
+
+```{r}
+# desvio padrao por especie
+tapply(penguins_sem_na$bill_length_mm, penguins_sem_na$species, sd)
+```
+
+<br>
+
+```{r}
+# desvio padrao por ilha
+tapply(penguins_sem_na$bill_length_mm, penguins_sem_na$island, sd)
+```
+
+# Dúvidas?
+
+## Programação no R
+
+<br>
+
+- **Automatizar** tarefas maçantes...
+- Direcionar o **comportamento** dos códigos com base em **condições** ou **repetições**
+- **Criar funções** para reutilizar códigos, melhorar organização, reduzir erros e maior generalização
+
+## Controle de fluxo
+
+- Muda o comportamento do código com base em **condições**
+- Condicionais: `if`, `else` e `else if` 
+
+<center>
+<img src="img/condicional-com-else.jpg" style="width:60%"/>
+</center>
+
+::: footer
+[arteprog arte e programação](https://arteprog.space/programacao-criativa/conteudo/condicionais.html)
+:::
+
+## if
+
+- Se algo for **verdadeiro**, faça ...
+
+```{r}
+x <- 10
+if(x > 5){
+  
+  print("x é maior que 5")
+  
+}
+```
+
+![](img/if.png){.absolute right="-50" top="300"}
+
+## if else
+
+- Se algo for **verdadeiro**, faça ...
+- Se não (**falso**), faça ...
+
+```{r}
+x <- 3
+if(x > 5){
+  
+  print("x é maior que 5")
+  
+  }else{
+  
+  print("x é menor ou igual a 5")
+}
+```
+
+![](img/if_else.png){.absolute right="-185" top="300"}
+
+## else if
+
+- Se algo for **verdadeiro**, faça ...
+- Se não (**falso**) se for **verdadeiro**, faça ...
+- Se não (**falso**), faça ...
+
+```{r}
+x <- 7
+if(x > 10){
+  
+  print("x é maior que 10")
+  
+  }else if(x > 5){
+  
+    print("x está entre 6 e 10")
+    
+    }else{
+      
+      print("x é 5 ou menor")
+}
+```
+
+![](img/if_else_if.png){.absolute width="600" height="500" right="-200" top="200"}
+
+# Dúvidas?
+
+## Estruturas de repetição
+
+- Executa um bloco de código com base em **repetições** 
+- Laços: `for`, `while` e `repeat` 
+- Controles: `break` e `next`
+
+<center>
+<img src="img/while.gif" style="width:60%"/>
+</center>
+
+## for
+
+- **Executa** um bloco de código **`para`** uma **sequência de valores** (vetores ou listas) [*iteração*]
+
+<br> 
+```{r}
+for(i in 1:5){
+  print(i)
+}
+```
+
+![](img/for.png){.absolute right="-200" top="180"}
+
+## for
+
+- **Executa** um bloco de código **`para`** uma **sequência de valores** (vetores ou listas) [*iteração*]
+
+<br> 
+```{r}
+prog <- c("R", "python", "julia", "Fortran")
+for(i in prog){
+  print(i)
+}
+```
+
+![](img/for.png){.absolute right="-200" top="180"}
+
+## while
+
+- **Executa** um bloco de código **`enquanto`** uma condição é **verdadeira**
+
+```{r}
+x <- 1
+while(x <= 5){
+  print(x)
+  x <- x + 1  # atualiza o x
+}
+```
+
+![](img/while.png){.absolute right="-200" top="200"}
+
+## repeat
+
+- **Executa** um bloco de código **`repetidamente`** até que uma condição de parada (`break`) seja **atendida**
+
+```{r}
+x <- 1
+repeat{
+  print(x)
+  x <- x + 1
+  if(x > 5){
+    break  # para o loop para x > 5
+  }
+}
+```
+
+![](img/repeat.png){.absolute right="-200" top="200"}
+
+## break
+
+- Usado para **sair** de um laço antes que ele complete todas as iterações
+
+```{r}
+for(i in 1:10){
+  if (i == 6){
+    break  # sai do laco quando i for igual a 6
+  }
+  print(i)
+}
+```
+
+## next
+
+- Usado para fazer o laço **pular** a próxima iteração sem executar o código que vem após ele
+
+```{r}
+for(i in 1:5){
+  if(i == 3){
+    next  # pula o numero 3
+  }
+  print(i)
+}
+```
+
+## 
+x <- 1
+while (x <= 10) {
+  if (x %% 2 == 0) {
+    print(paste(x, "é par"))
+  } else {
+    print(paste(x, "é ímpar"))
+  }
+  x <- x + 1
+}
+
+
+## Criar funções
+
+
+## Muito obrigado!
+
+::::: columns
+::: {.column width="50%"}
+Agradecimentos:
+
+-   [Prof. Tadeu Siqueira](https://tsiqueiralab.weebly.com/)
+-   [Prof. Miltinho](https://leec.eco.br/)
+- [Cleber Chaves]()
+-   [Fapesp #2022/01899-6]()
+
+<center>
+<img src="img/fapesp.png" style="width:70%"/>
+</center>
+:::
+
+::: {.column width="50%"}
+Contato:
+
+<center>
+[mauricio.vancine\@gmail.com]() [mauriciovancine.github.io](mauriciovancine.github.io)
+<img src="img/gif_frogs.gif" style="width:80%"/>
+</center>
+:::
+:::::
+
+::: footer
+Slides por [Maurício Vancine](https://mauriciovancine.github.io/), feitos com [Quarto](https://quarto.org/). Código disponível no [GitHub](https://github.com/mauriciovancine/workshop-r-introduction/blob/master/01_slides/slides.qmd).
+:::
