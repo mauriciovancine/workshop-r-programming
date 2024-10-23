@@ -363,6 +363,21 @@ table(penguins_sem_na$species)
 prop.table(table(penguins_sem_na$species))
 ```
 
+## Função composta
+
+```{r eval=FALSE}
+prop.table(table(penguins_sem_na$species))
+
+# funcao composta
+1:3
+sum(1:3)
+log(sum(1:3))
+```
+
+<center>
+<img src="img/general_fog02.jpg" style="width:40%"/>
+</center>
+
 ## Tabela de frequência
 
 <br>

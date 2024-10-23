@@ -103,6 +103,11 @@ prop.table(table(penguins_sem_na$species))
 prop.table(table(penguins_sem_na$species)) * 100
 round(prop.table(table(penguins_sem_na$species)), 4) * 100
 
+# funcao composta
+1:3
+sum(1:3)
+log(sum(1:3))
+
 # frequencia absoluta duas colunas
 table(penguins_sem_na$species, penguins_sem_na$island)
 
