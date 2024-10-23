@@ -95,14 +95,12 @@ for(i in 1:nrow(penguins_na)){
     if(penguins_na[i, ]$bill_length_mm > 40) {
         
         penguins_na[i, ]$bill_length_class <- "bico_longo"
-    
-        }else {
-            
-            penguins_na[i, ]$bill_length_class <- "bico_curto"
+        
+    }else {
+        
+        penguins_na[i, ]$bill_length_class <- "bico_curto"
     }
 }
-
-View(penguins_na)
 
 ## exercicio 17 ----
 # Use um loop while para emagrecer um pinguim. Comece com um pinguim pesando 10 kg 
@@ -126,8 +124,8 @@ check_bill <- function(bill_length){
     
     if(bill_length > 40){
         return("Bico grande")
-    
-        }else {
+        
+    }else {
         return("Bico pequeno")
     }
 }
@@ -171,9 +169,19 @@ penguins_import
 
 # desafio
 # fazer um loop para automatizar o download de varios arquivos.
-# link: 
-# funcao: download.file
+# link: https://github.com/mauriciovancine/workshop-r-programming/blob/main/dados/penguins_na1.csv
+# funcoes: download.file, paste0, basename
+# atencao: em download.file precisa do argumento mode = "wb"
 
+dir.create("02_exercises/download")
 
+for(i in 1:100){
+    
+    url_i <- paste0("https://github.com/mauriciovancine/workshop-r-programming/blob/main/dados/penguins_na", i, ".csv")
+    name_i <- basename(url_i)
+    
+    download.file(url = url_i, destfile = paste0("dowload/", name_i), mode = "wb")
+    
+}
 
 # end ---------------------------------------------------------------------
