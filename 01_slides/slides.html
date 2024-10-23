@@ -547,7 +547,7 @@
 <div class="column" style="width:40%&quot;;">
 <div class="cell">
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href=""></a><span class="co"># pseudocodigo</span></span>
-<span id="cb1-2"><a href=""></a><span class="fl">0.</span> listar pacotes</span>
+<span id="cb1-2"><a href=""></a><span class="fl">0.</span> pacotes</span>
 <span id="cb1-3"><a href=""></a><span class="fl">1.</span> importar dados</span>
 <span id="cb1-4"><a href=""></a><span class="fl">2.</span> limpar e ajustar dados</span>
 <span id="cb1-5"><a href=""></a><span class="fl">3.</span> analises estatisticas</span>
@@ -558,7 +558,7 @@
 <div class="cell">
 <div class="sourceCode cell-code" id="cb2"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href=""></a><span class="co"># codigo</span></span>
 <span id="cb2-2"><a href=""></a></span>
-<span id="cb2-3"><a href=""></a><span class="co"># 0. listar pacotes</span></span>
+<span id="cb2-3"><a href=""></a><span class="co"># 0. pacotes</span></span>
 <span id="cb2-4"><a href=""></a><span class="fu">library</span>(tidyverse)</span>
 <span id="cb2-5"><a href=""></a><span class="fu">library</span>(palmerpenguins)</span>
 <span id="cb2-6"><a href=""></a></span>
@@ -874,7 +874,7 @@
 <section class="slide level2">
 <h2>Tabela de frequência</h2>
 <p><br></p>
-<p><strong>Frequência absoluta (fi)</strong></p>
+<p><strong>Frequência absoluta de duas colunas (fi)</strong></p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb25"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb25-1"><a href=""></a><span class="fu">table</span>(penguins_sem_na<span class="sc">$</span>species, penguins_sem_na<span class="sc">$</span>island)</span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
@@ -885,7 +885,7 @@
   Gentoo       119     0         0</code></pre>
 </div>
 </div>
-<p><strong>Frequência relativa (fri)</strong></p>
+<p><strong>Frequência relativa de duas colunas (fri)</strong></p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb27"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb27-1"><a href=""></a><span class="fu">round</span>(<span class="fu">prop.table</span>(<span class="fu">table</span>(penguins_sem_na<span class="sc">$</span>species, penguins_sem_na<span class="sc">$</span>island)), <span class="dv">4</span>) <span class="sc">*</span> <span class="dv">100</span></span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
@@ -960,11 +960,11 @@
 [2,]    4    5    6
 [3,]    7    8    9</code></pre>
 </div>
-<div class="sourceCode cell-code" id="cb32"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb32-1"><a href=""></a><span class="co"># funcao sum nas linhas (MARGIN = 1)</span></span>
-<span id="cb32-2"><a href=""></a>m_sum_row <span class="ot">&lt;-</span> <span class="fu">apply</span>(m, <span class="dv">1</span>, sum)</span>
-<span id="cb32-3"><a href=""></a>m_sum_row</span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb32"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb32-1"><a href=""></a><span class="co"># funcao mean nas linhas (MARGIN = 1)</span></span>
+<span id="cb32-2"><a href=""></a>m_mean_row <span class="ot">&lt;-</span> <span class="fu">apply</span>(m, <span class="dv">1</span>, mean)</span>
+<span id="cb32-3"><a href=""></a>m_mean_row</span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>[1]  6 15 24</code></pre>
+<pre><code>[1] 2 5 8</code></pre>
 </div>
 </div>
 </section>
@@ -1297,6 +1297,21 @@ $c$e
  4.827319  5.947069  3.028097 </code></pre>
 </div>
 </div>
+</section>
+<section class="slide level2 smaller">
+<h2>Para se aprofundar</h2>
+<p><br></p>
+<ul>
+<li><code>rowSums</code> e <code>colSums</code>: soma de linhas e colunas</li>
+<li><code>rowMeans</code> e <code>colMeans</code>: média de linhas e colunas</li>
+<li><code>rowMedians</code> e <code>colMedians</code>: mediana de linhas e colunas</li>
+<li><code>rowVars</code> e <code>colVars</code>: variância de linhas e colunas</li>
+<li><code>rowMins</code> e <code>colMins</code>: mínimo de linhas e colunas</li>
+<li><code>rowMaxs</code> e <code>colMaxs</code>: máximo de linhas e colunas</li>
+<li><code>rowProds</code> e <code>colProds</code>: produto de linhas e colunas</li>
+<li><code>rowCumsums</code> e <code>colCumsums</code>: soma cumulativa de linhas e colunas</li>
+<li><code>sweep()</code>: função para subtrair, adicionar, multiplicar ou dividir cada linha ou coluna</li>
+</ul>
 </section></section>
 <section>
 <section class="title-slide slide level1 center">
@@ -1312,6 +1327,10 @@ $c$e
 <li><strong>Criar funções</strong> para reutilizar códigos, melhorar organização, reduzir erros e maior generalização</li>
 </ul>
 </section>
+<section class="slide level2">
+<h2>IMPORTANTE!</h2>
+
+<img data-src="img/general_code_meme.jpg" class="r-stretch"></section>
 <section class="slide level2">
 <h2>Controle de fluxo</h2>
 <ul>
@@ -1564,9 +1583,10 @@ $c$e
 </ul>
 <p><br></p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb101"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb101-1"><a href=""></a><span class="cf">for</span>(i <span class="cf">in</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">10</span>){</span>
-<span id="cb101-2"><a href=""></a>    <span class="fu">print</span>(i)</span>
-<span id="cb101-3"><a href=""></a>}</span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb101"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb101-1"><a href=""></a><span class="co"># for</span></span>
+<span id="cb101-2"><a href=""></a><span class="cf">for</span>(i <span class="cf">in</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">10</span>){</span>
+<span id="cb101-3"><a href=""></a>    <span class="fu">print</span>(i)</span>
+<span id="cb101-4"><a href=""></a>}</span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 1
 [1] 2
@@ -1589,10 +1609,11 @@ $c$e
 </ul>
 <p><br></p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb103"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb103-1"><a href=""></a>prog <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">"R"</span>, <span class="st">"python"</span>, <span class="st">"julia"</span>, <span class="st">"Fortran"</span>)</span>
-<span id="cb103-2"><a href=""></a><span class="cf">for</span>(i <span class="cf">in</span> prog){</span>
-<span id="cb103-3"><a href=""></a>    <span class="fu">print</span>(i)</span>
-<span id="cb103-4"><a href=""></a>}</span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb103"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb103-1"><a href=""></a><span class="co"># for</span></span>
+<span id="cb103-2"><a href=""></a>prog <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">"R"</span>, <span class="st">"python"</span>, <span class="st">"julia"</span>, <span class="st">"Fortran"</span>)</span>
+<span id="cb103-3"><a href=""></a><span class="cf">for</span>(i <span class="cf">in</span> prog){</span>
+<span id="cb103-4"><a href=""></a>    <span class="fu">print</span>(i)</span>
+<span id="cb103-5"><a href=""></a>}</span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] "R"
 [1] "python"
@@ -1608,11 +1629,12 @@ $c$e
 <li><strong>Executa</strong> um bloco de código <strong><code>enquanto</code></strong> uma condição é <strong>verdadeira</strong></li>
 </ul>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb105"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb105-1"><a href=""></a>x <span class="ot">&lt;-</span> <span class="dv">1</span></span>
-<span id="cb105-2"><a href=""></a><span class="cf">while</span>(x <span class="sc">&lt;=</span> <span class="dv">5</span>){</span>
-<span id="cb105-3"><a href=""></a>    <span class="fu">print</span>(x)</span>
-<span id="cb105-4"><a href=""></a>    x <span class="ot">&lt;-</span> x <span class="sc">+</span> <span class="dv">1</span>  <span class="co"># atualiza o x</span></span>
-<span id="cb105-5"><a href=""></a>}</span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb105"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb105-1"><a href=""></a><span class="co"># while</span></span>
+<span id="cb105-2"><a href=""></a>x <span class="ot">&lt;-</span> <span class="dv">1</span></span>
+<span id="cb105-3"><a href=""></a><span class="cf">while</span>(x <span class="sc">&lt;=</span> <span class="dv">5</span>){</span>
+<span id="cb105-4"><a href=""></a>    <span class="fu">print</span>(x)</span>
+<span id="cb105-5"><a href=""></a>    x <span class="ot">&lt;-</span> x <span class="sc">+</span> <span class="dv">1</span>  <span class="co"># atualiza o x</span></span>
+<span id="cb105-6"><a href=""></a>}</span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 1
 [1] 2
@@ -1629,14 +1651,15 @@ $c$e
 <li><strong>Executa</strong> um bloco de código <strong><code>repetidamente</code></strong> até que uma condição de parada (<code>break</code>) seja <strong>atendida</strong></li>
 </ul>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb107"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb107-1"><a href=""></a>x <span class="ot">&lt;-</span> <span class="dv">1</span></span>
-<span id="cb107-2"><a href=""></a><span class="cf">repeat</span>{</span>
-<span id="cb107-3"><a href=""></a>    <span class="fu">print</span>(x)</span>
-<span id="cb107-4"><a href=""></a>    x <span class="ot">&lt;-</span> x <span class="sc">+</span> <span class="dv">1</span></span>
-<span id="cb107-5"><a href=""></a>    <span class="cf">if</span>(x <span class="sc">&gt;</span> <span class="dv">5</span>){</span>
-<span id="cb107-6"><a href=""></a>        <span class="cf">break</span>  <span class="co"># para o loop para x &gt; 5</span></span>
-<span id="cb107-7"><a href=""></a>    }</span>
-<span id="cb107-8"><a href=""></a>}</span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb107"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb107-1"><a href=""></a><span class="co"># repeat</span></span>
+<span id="cb107-2"><a href=""></a>x <span class="ot">&lt;-</span> <span class="dv">1</span></span>
+<span id="cb107-3"><a href=""></a><span class="cf">repeat</span>{</span>
+<span id="cb107-4"><a href=""></a>    <span class="fu">print</span>(x)</span>
+<span id="cb107-5"><a href=""></a>    x <span class="ot">&lt;-</span> x <span class="sc">+</span> <span class="dv">1</span></span>
+<span id="cb107-6"><a href=""></a>    <span class="cf">if</span>(x <span class="sc">&gt;</span> <span class="dv">5</span>){</span>
+<span id="cb107-7"><a href=""></a>        <span class="cf">break</span>  <span class="co"># para o loop para x &gt; 5</span></span>
+<span id="cb107-8"><a href=""></a>    }</span>
+<span id="cb107-9"><a href=""></a>}</span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 1
 [1] 2
@@ -1653,12 +1676,13 @@ $c$e
 <li>Usado para <strong>sair</strong> de um laço antes que ele complete todas as iterações</li>
 </ul>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb109"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb109-1"><a href=""></a><span class="cf">for</span>(i <span class="cf">in</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">10</span>){</span>
-<span id="cb109-2"><a href=""></a>    <span class="cf">if</span>(i <span class="sc">==</span> <span class="dv">6</span>){</span>
-<span id="cb109-3"><a href=""></a>        <span class="cf">break</span>  <span class="co"># sai do laco quando i for igual a 6</span></span>
-<span id="cb109-4"><a href=""></a>    }</span>
-<span id="cb109-5"><a href=""></a>    <span class="fu">print</span>(i)</span>
-<span id="cb109-6"><a href=""></a>}</span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb109"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb109-1"><a href=""></a><span class="co"># break</span></span>
+<span id="cb109-2"><a href=""></a><span class="cf">for</span>(i <span class="cf">in</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">10</span>){</span>
+<span id="cb109-3"><a href=""></a>    <span class="cf">if</span>(i <span class="sc">==</span> <span class="dv">6</span>){</span>
+<span id="cb109-4"><a href=""></a>        <span class="cf">break</span>  <span class="co"># sai do laco quando i for igual a 6</span></span>
+<span id="cb109-5"><a href=""></a>    }</span>
+<span id="cb109-6"><a href=""></a>    <span class="fu">print</span>(i)</span>
+<span id="cb109-7"><a href=""></a>}</span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 1
 [1] 2
@@ -1674,12 +1698,13 @@ $c$e
 <li>Usado para fazer o laço <strong>pular</strong> a próxima iteração sem executar o código que vem após ele</li>
 </ul>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb111"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb111-1"><a href=""></a><span class="cf">for</span>(i <span class="cf">in</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">5</span>){</span>
-<span id="cb111-2"><a href=""></a>    <span class="cf">if</span>(i <span class="sc">==</span> <span class="dv">3</span>){</span>
-<span id="cb111-3"><a href=""></a>        <span class="cf">next</span>  <span class="co"># pula o numero 3</span></span>
-<span id="cb111-4"><a href=""></a>    }</span>
-<span id="cb111-5"><a href=""></a>    <span class="fu">print</span>(i)</span>
-<span id="cb111-6"><a href=""></a>}</span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb111"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb111-1"><a href=""></a><span class="co"># next</span></span>
+<span id="cb111-2"><a href=""></a><span class="cf">for</span>(i <span class="cf">in</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">5</span>){</span>
+<span id="cb111-3"><a href=""></a>    <span class="cf">if</span>(i <span class="sc">==</span> <span class="dv">3</span>){</span>
+<span id="cb111-4"><a href=""></a>        <span class="cf">next</span>  <span class="co"># pula o numero 3</span></span>
+<span id="cb111-5"><a href=""></a>    }</span>
+<span id="cb111-6"><a href=""></a>    <span class="fu">print</span>(i)</span>
+<span id="cb111-7"><a href=""></a>}</span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 1
 [1] 2
@@ -1692,14 +1717,15 @@ $c$e
 <h2>Controle de fluxo e repetição</h2>
 <h3>for</h3>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb113"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb113-1"><a href=""></a><span class="cf">for</span>(i <span class="cf">in</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">10</span>){</span>
-<span id="cb113-2"><a href=""></a>    </span>
-<span id="cb113-3"><a href=""></a>    <span class="cf">if</span>(i <span class="sc">%%</span> <span class="dv">2</span> <span class="sc">==</span> <span class="dv">0</span>){</span>
-<span id="cb113-4"><a href=""></a>        <span class="fu">print</span>(<span class="fu">paste</span>(i, <span class="st">"é par"</span>))</span>
-<span id="cb113-5"><a href=""></a>    } <span class="cf">else</span>{</span>
-<span id="cb113-6"><a href=""></a>        <span class="fu">print</span>(<span class="fu">paste</span>(i, <span class="st">"é ímpar"</span>))</span>
-<span id="cb113-7"><a href=""></a>    }</span>
-<span id="cb113-8"><a href=""></a>}</span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb113"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb113-1"><a href=""></a><span class="co"># for e if/else</span></span>
+<span id="cb113-2"><a href=""></a><span class="cf">for</span>(i <span class="cf">in</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">10</span>){</span>
+<span id="cb113-3"><a href=""></a>    </span>
+<span id="cb113-4"><a href=""></a>    <span class="cf">if</span>(i <span class="sc">%%</span> <span class="dv">2</span> <span class="sc">==</span> <span class="dv">0</span>){</span>
+<span id="cb113-5"><a href=""></a>        <span class="fu">print</span>(<span class="fu">paste</span>(i, <span class="st">"é par"</span>))</span>
+<span id="cb113-6"><a href=""></a>    } <span class="cf">else</span>{</span>
+<span id="cb113-7"><a href=""></a>        <span class="fu">print</span>(<span class="fu">paste</span>(i, <span class="st">"é ímpar"</span>))</span>
+<span id="cb113-8"><a href=""></a>    }</span>
+<span id="cb113-9"><a href=""></a>}</span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] "1 é ímpar"
 [1] "2 é par"
@@ -1718,16 +1744,17 @@ $c$e
 <h2>Controle de fluxo e repetição</h2>
 <h3>while</h3>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb115"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb115-1"><a href=""></a>x <span class="ot">&lt;-</span> <span class="dv">1</span></span>
-<span id="cb115-2"><a href=""></a><span class="cf">while</span>(x <span class="sc">&lt;=</span> <span class="dv">10</span>){</span>
-<span id="cb115-3"><a href=""></a>    </span>
-<span id="cb115-4"><a href=""></a>    <span class="cf">if</span>(x <span class="sc">%%</span> <span class="dv">2</span> <span class="sc">==</span> <span class="dv">0</span>){</span>
-<span id="cb115-5"><a href=""></a>        <span class="fu">print</span>(<span class="fu">paste</span>(x, <span class="st">"é par"</span>))</span>
-<span id="cb115-6"><a href=""></a>    } <span class="cf">else</span>{</span>
-<span id="cb115-7"><a href=""></a>        <span class="fu">print</span>(<span class="fu">paste</span>(x, <span class="st">"é ímpar"</span>))</span>
-<span id="cb115-8"><a href=""></a>    }</span>
-<span id="cb115-9"><a href=""></a>    x <span class="ot">&lt;-</span> x <span class="sc">+</span> <span class="dv">1</span></span>
-<span id="cb115-10"><a href=""></a>}</span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb115"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb115-1"><a href=""></a><span class="co"># while e if/else</span></span>
+<span id="cb115-2"><a href=""></a>x <span class="ot">&lt;-</span> <span class="dv">1</span></span>
+<span id="cb115-3"><a href=""></a><span class="cf">while</span>(x <span class="sc">&lt;=</span> <span class="dv">10</span>){</span>
+<span id="cb115-4"><a href=""></a>    </span>
+<span id="cb115-5"><a href=""></a>    <span class="cf">if</span>(x <span class="sc">%%</span> <span class="dv">2</span> <span class="sc">==</span> <span class="dv">0</span>){</span>
+<span id="cb115-6"><a href=""></a>        <span class="fu">print</span>(<span class="fu">paste</span>(x, <span class="st">"é par"</span>))</span>
+<span id="cb115-7"><a href=""></a>    } <span class="cf">else</span>{</span>
+<span id="cb115-8"><a href=""></a>        <span class="fu">print</span>(<span class="fu">paste</span>(x, <span class="st">"é ímpar"</span>))</span>
+<span id="cb115-9"><a href=""></a>    }</span>
+<span id="cb115-10"><a href=""></a>    x <span class="ot">&lt;-</span> x <span class="sc">+</span> <span class="dv">1</span></span>
+<span id="cb115-11"><a href=""></a>}</span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] "1 é ímpar"
 [1] "2 é par"

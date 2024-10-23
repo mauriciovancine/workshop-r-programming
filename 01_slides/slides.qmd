@@ -171,7 +171,7 @@ Sintam-se à vontade para me interromper e tirar dúvidas
 ::: {.column width="40%\""}
 ```{r eval=FALSE}
 # pseudocodigo
-0. listar pacotes
+0. pacotes
 1. importar dados
 2. limpar e ajustar dados
 3. analises estatisticas
@@ -184,7 +184,7 @@ Sintam-se à vontade para me interromper e tirar dúvidas
 ```{r eval=FALSE}
 # codigo
 
-# 0. listar pacotes
+# 0. pacotes
 library(tidyverse)
 library(palmerpenguins)
 
@@ -399,12 +399,12 @@ round(prop.table(table(penguins_sem_na$species)), 4) * 100
 
 <br>
 
-**Frequência absoluta (fi)**
+**Frequência absoluta de duas colunas (fi)**
 ```{r}
 table(penguins_sem_na$species, penguins_sem_na$island)
 ```
 
-**Frequência relativa (fri)**
+**Frequência relativa de duas colunas (fri)**
 ```{r}
 round(prop.table(table(penguins_sem_na$species, penguins_sem_na$island)), 4) * 100
 ```
@@ -469,9 +469,9 @@ apply(X, MARGIN, FUN, ...)
 m <- matrix(1:9, nrow = 3, byrow = TRUE)
 m 
 
-# funcao sum nas linhas (MARGIN = 1)
-m_sum_row <- apply(m, 1, sum)
-m_sum_row
+# funcao mean nas linhas (MARGIN = 1)
+m_mean_row <- apply(m, 1, mean)
+m_mean_row
 ```
 
 ## apply {.smaller}
@@ -689,6 +689,20 @@ tapply(penguins_sem_na$bill_length_mm, penguins_sem_na$species, sd)
 tapply(penguins_sem_na$bill_length_mm, penguins_sem_na$island, sd)
 ```
 
+## Para se aprofundar {.smaller}
+
+<br>
+
+- `rowSums` e `colSums`: soma de linhas e colunas
+- `rowMeans` e `colMeans`: média de linhas e colunas
+- `rowMedians` e `colMedians`: mediana de linhas e colunas
+- `rowVars` e `colVars`: variância de linhas e colunas
+- `rowMins` e `colMins`: mínimo de linhas e colunas
+- `rowMaxs` e `colMaxs`: máximo de linhas e colunas
+- `rowProds` e `colProds`: produto de linhas e colunas
+- `rowCumsums` e `colCumsums`: soma cumulativa de linhas e colunas 
+- `sweep()`: função para subtrair, adicionar, multiplicar ou dividir cada linha ou coluna
+
 # Dúvidas?
 
 ## Programação no R
@@ -698,6 +712,10 @@ tapply(penguins_sem_na$bill_length_mm, penguins_sem_na$island, sd)
 - **Automatizar** tarefas maçantes...
 - Direcionar o **comportamento** dos códigos com base em **condições** ou **repetições**
 - **Criar funções** para reutilizar códigos, melhorar organização, reduzir erros e maior generalização
+
+## IMPORTANTE!
+
+![](img/general_code_meme.jpg)
 
 ## Controle de fluxo
 
@@ -865,6 +883,7 @@ if(x > 10){
 
 <br> 
 ```{r}
+# for
 for(i in 1:10){
     print(i)
 }
@@ -878,6 +897,7 @@ for(i in 1:10){
 
 <br> 
 ```{r}
+# for
 prog <- c("R", "python", "julia", "Fortran")
 for(i in prog){
     print(i)
@@ -891,6 +911,7 @@ for(i in prog){
 - **Executa** um bloco de código **`enquanto`** uma condição é **verdadeira**
 
 ```{r}
+# while
 x <- 1
 while(x <= 5){
     print(x)
@@ -905,6 +926,7 @@ while(x <= 5){
 - **Executa** um bloco de código **`repetidamente`** até que uma condição de parada (`break`) seja **atendida**
 
 ```{r}
+# repeat
 x <- 1
 repeat{
     print(x)
@@ -922,6 +944,7 @@ repeat{
 - Usado para **sair** de um laço antes que ele complete todas as iterações
 
 ```{r}
+# break
 for(i in 1:10){
     if(i == 6){
         break  # sai do laco quando i for igual a 6
@@ -935,6 +958,7 @@ for(i in 1:10){
 - Usado para fazer o laço **pular** a próxima iteração sem executar o código que vem após ele
 
 ```{r}
+# next
 for(i in 1:5){
     if(i == 3){
         next  # pula o numero 3
@@ -948,6 +972,7 @@ for(i in 1:5){
 ### for
 
 ```{r}
+# for e if/else
 for(i in 1:10){
     
     if(i %% 2 == 0){
@@ -964,6 +989,7 @@ for(i in 1:10){
 ### while
 
 ```{r}
+# while e if/else
 x <- 1
 while(x <= 10){
     
