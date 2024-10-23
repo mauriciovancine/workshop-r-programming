@@ -107,7 +107,8 @@ penguins_sem_na <- na.omit(penguins)
 - Estruturas de repetição
 - Laços: `for`, `while` e `repeat`
 - Comandos: `break` e `next`
-- Criar funções
+- Funções
+- Funções externas: `source`
 :::
 
 ## IMPORTANTE!!!
@@ -149,7 +150,7 @@ Sintam-se à vontade para me interromper e tirar dúvidas
 6.  Pacotes (*packages*)
 7.  Ajuda (*help*)
 8.  Ambiente (*environment*)
-9.  Diretorio
+9.  Diretório
 10. Citações
 :::
 :::::
@@ -260,7 +261,7 @@ penguins_sem_na <- na.omit(penguins)
 library(palmerpenguins)
 ```
 
-![](img/culmen_depth.png){.absolute width="600" height="400" right="-100" top="300"}
+![](img/culmen_depth.png){.absolute width="430" height="300" right="-30" top="425"}
 
 ::: footer
 [palmerpenguins](https://allisonhorst.github.io/palmerpenguins/)
@@ -518,7 +519,7 @@ lapply(x, mean)  # media de cada lista - retorna lista
 ## sapply
 
 - Similar a `lapply`, retornando matriz, vetor ou lista (ele escolhe...)
-- **Exemplo**
+- **Exemplos**
 
 ```{r}
 # lista
@@ -531,7 +532,7 @@ sapply(x, mean)  # media de cada lista - retorna o que quiser...
 ## vapply
 
 - Similar a sapply, mas permite definir o tipo de retorno
-- **Exemplo**:
+- **Exemplos**
 
 ```{r}
 # lista
@@ -544,7 +545,7 @@ vapply(x, mean, numeric(1))  # media de cada lista - retorna escolha
 ## tapply
 
 - Aplica função sobre subconjuntos definido por fatores
-- **Exemplo**
+- **Exemplos**
 
 ```{r}
 # data frame
@@ -609,10 +610,7 @@ rapply(l, sqrt, classes = "numeric", how = "replace")
 rapply(l, sqrt, classes = "numeric", how = "unlist")
 ```
 
-## rapply
-
-- Função recursiva usada para aplicar uma função a todos os elementos de uma lista (ou estrutura aninhada de listas)
-- **Exemplos**
+<br>
 
 ```{r}
 # usando deflt para retornar NA para elementos nao numericos
@@ -1041,8 +1039,215 @@ for(i in 1:length(x)){
 obj
 ```
 
-## Criar funções
+## Usos avançados do for
 
+- Combinando resultados em um objeto vazio por **linhas**
+
+```{r}
+df <- data.frame()
+
+for(i in 1:5){
+
+  q <- i^2
+  c <- i^3
+  res <- data.frame(numero = i, quadrado = q, cubo = c)
+  df <- rbind(df, res)
+}
+df
+```
+
+## Usos avançados do for
+
+- Combinando resultados em um objeto vazio por **colunas**
+
+```{r}
+df <- data.frame(numero = 1:5)
+
+for(i in 1:5){
+    
+    res <- i * 1:5
+    df_res <- data.frame(res)
+    colnames(df_res) <- paste0("mult", i)
+    df <- cbind(df, df_res)
+}
+df
+```
+
+## Funções
+
+- Uma função é um **bloco de código** que realiza uma tarefa específica
+
+- Possui **entradas** (argumentos) e retorna **saídas** (resultados)
+
+- Utilizada para evitar **repetição de código**, tornando-o mais **organizado** e **reutilizável**
+
+![](img/code_function.png){.absolute width="400" height="400" right="0" top="340"}
+
+## Estrutura de uma função
+
+- **nome_da_funcao**: nome de escolha da função
+- **argumentos**: valores de entrada que a função recebe
+- **retorno**: especifica o que a função devolve (`return()`)
+
+```{r}
+# estrutura
+nome_da_funcao <- function(argumentos){
+  # corpo da funcao
+  # calculos, operacoes ou processos
+  return(resultado)
+}
+```
+
+## Exemplo de funções
+
+- Funções com um argumento
+- Elevar um número ao quadrado
+
+```{r}
+# definicao
+quadrado <- function(x){
+  return(x^2)
+}
+
+# uso
+quadrado(2)
+```
+
+## Exemplo de funções
+
+- Funções com um argumento
+- Raiz quadrada de um número
+
+```{r}
+# definicao
+raiz <- function(x){
+  return(x^(1/2))
+}
+
+# uso
+raiz(4)
+```
+
+## Exemplo de funções
+
+- Funções com múltiplos argumentos
+- Soma dois números
+
+```{r}
+# definicao
+soma <- function(a, b){
+  return(a + b)
+}
+
+# uso
+soma(40, 2)
+```
+
+## Exemplo de funções
+
+- Argumentos com valores padrão
+
+```{r}
+# definicao
+saudacao <- function(nome = "Amigo"){
+  return(paste("Olá,", nome))
+}
+
+# uso
+saudacao()
+saudacao("Maurício")
+```
+
+## Exemplo de funções
+
+- Função com controle de fluxo
+- Verificar se um número é par ou ímpar
+
+```{r}
+# definicao
+par_ou_impar <- function(num){
+  if(num %% 2 == 0){
+    return("Par")
+  } else{
+    return("Ímpar")
+  }
+}
+
+# uso
+par_ou_impar(42)
+par_ou_impar(23)
+```
+
+## Exemplo de funções
+
+- Função com repetições
+- Soma sequência de valores
+
+```{r}
+# definicao
+soma_sequencia <- function(n){
+  total <- 0
+  for(i in 1:n){
+    total <- total + i
+  }
+  return(total)
+}
+
+# uso
+soma_sequencia(3)
+```
+
+## Exemplo de funções
+
+- O `...` permite passar um número indefinido de argumentos para a função
+
+```{r}
+# definicao
+soma_variavel <- function(...){
+  return(sum(...))
+}
+
+# uso
+soma_variavel(1, 2, 3, 4)
+
+# uso
+soma_variavel(1:100)
+```
+
+## Funções externas
+
+- Permite usar uma função em um script separado do script principal
+- Carrega e executa código salvo em um arquivo de script externo
+
+```{r}
+# arquivo: funcoes_util.R
+soma <- function(a, b) {
+  return(a + b)
+}
+
+multiplicacao <- function(a, b) {
+  return(a * b)
+}
+```
+
+## Funções externas
+
+- Permite usar uma função em um script separado do script principal
+- Carrega e executa código salvo em um arquivo de script externo
+
+```{r}
+# carrega as funcoes
+source("funcoes_util.R")
+
+# uso
+res_soma <- soma(3, 5)
+res_soma
+
+res_multi <- multiplicacao(3, 5)
+res_multi
+```
+
+# Dúvidas?
 
 ## Muito obrigado!
 
@@ -1050,14 +1255,9 @@ obj
 ::: {.column width="50%"}
 Agradecimentos:
 
--   [Prof. Tadeu Siqueira](https://tsiqueiralab.weebly.com/)
--   [Prof. Miltinho](https://leec.eco.br/)
+- [Prof. Tadeu Siqueira](https://tsiqueiralab.weebly.com/)
+- [Prof. Miltinho](https://leec.eco.br/)
 - [Cleber Chaves]()
--   [Fapesp #2022/01899-6]()
-
-<center>
-<img src="img/fapesp.png" style="width:70%"/>
-</center>
 :::
 
 ::: {.column width="50%"}

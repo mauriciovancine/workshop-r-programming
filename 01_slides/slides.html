@@ -478,7 +478,8 @@
 <li>Estruturas de repetição</li>
 <li>Laços: <code>for</code>, <code>while</code> e <code>repeat</code></li>
 <li>Comandos: <code>break</code> e <code>next</code></li>
-<li>Criar funções</li>
+<li>Funções</li>
+<li>Funções externas: <code>source</code></li>
 </ul>
 </div>
 </div>
@@ -524,7 +525,7 @@
 <li>Pacotes (<em>packages</em>)</li>
 <li>Ajuda (<em>help</em>)</li>
 <li>Ambiente (<em>environment</em>)</li>
-<li>Diretorio</li>
+<li>Diretório</li>
 <li>Citações</li>
 </ol>
 </div>
@@ -627,7 +628,7 @@
 <span id="cb3-11"><a href=""></a><span class="co"># remover nas</span></span>
 <span id="cb3-12"><a href=""></a>penguins_sem_na <span class="ot">&lt;-</span> <span class="fu">na.omit</span>(penguins)</span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<p><img data-src="img/culmen_depth.png" class="absolute" style="top: 300px; right: -100px; width: 600px; height: 400px; "></p>
+<p><img data-src="img/culmen_depth.png" class="absolute" style="top: 425px; right: -30px; width: 430px; height: 300px; "></p>
 <div class="footer">
 <p><a href="https://allisonhorst.github.io/palmerpenguins/">palmerpenguins</a></p>
 </div>
@@ -1033,7 +1034,7 @@ $b
 <h2>sapply</h2>
 <ul>
 <li>Similar a <code>lapply</code>, retornando matriz, vetor ou lista (ele escolhe…)</li>
-<li><strong>Exemplo</strong></li>
+<li><strong>Exemplos</strong></li>
 </ul>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb43"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb43-1"><a href=""></a><span class="co"># lista</span></span>
@@ -1057,7 +1058,7 @@ $b
 <h2>vapply</h2>
 <ul>
 <li>Similar a sapply, mas permite definir o tipo de retorno</li>
-<li><strong>Exemplo</strong>:</li>
+<li><strong>Exemplos</strong></li>
 </ul>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb47"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb47-1"><a href=""></a><span class="co"># lista</span></span>
@@ -1081,7 +1082,7 @@ $b
 <h2>tapply</h2>
 <ul>
 <li>Aplica função sobre subconjuntos definido por fatores</li>
-<li><strong>Exemplo</strong></li>
+<li><strong>Exemplos</strong></li>
 </ul>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb51"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb51-1"><a href=""></a><span class="co"># data frame</span></span>
@@ -1197,13 +1198,7 @@ $c$e
   2   5   6 </code></pre>
 </div>
 </div>
-</section>
-<section class="slide level2">
-<h2>rapply</h2>
-<ul>
-<li>Função recursiva usada para aplicar uma função a todos os elementos de uma lista (ou estrutura aninhada de listas)</li>
-<li><strong>Exemplos</strong></li>
-</ul>
+<p><br></p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb65"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb65-1"><a href=""></a><span class="co"># usando deflt para retornar NA para elementos nao numericos</span></span>
 <span id="cb65-2"><a href=""></a><span class="fu">rapply</span>(l, sqrt, <span class="at">classes =</span> <span class="st">"numeric"</span>, <span class="at">deflt =</span> <span class="cn">NA</span>)</span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -1837,7 +1832,278 @@ $c$e
 </div>
 </section>
 <section class="slide level2">
-<h2>Criar funções</h2>
+<h2>Usos avançados do for</h2>
+<ul>
+<li>Combinando resultados em um objeto vazio por <strong>linhas</strong></li>
+</ul>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb125"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb125-1"><a href=""></a>df <span class="ot">&lt;-</span> <span class="fu">data.frame</span>()</span>
+<span id="cb125-2"><a href=""></a></span>
+<span id="cb125-3"><a href=""></a><span class="cf">for</span>(i <span class="cf">in</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">5</span>){</span>
+<span id="cb125-4"><a href=""></a></span>
+<span id="cb125-5"><a href=""></a>  q <span class="ot">&lt;-</span> i<span class="sc">^</span><span class="dv">2</span></span>
+<span id="cb125-6"><a href=""></a>  c <span class="ot">&lt;-</span> i<span class="sc">^</span><span class="dv">3</span></span>
+<span id="cb125-7"><a href=""></a>  res <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(<span class="at">numero =</span> i, <span class="at">quadrado =</span> q, <span class="at">cubo =</span> c)</span>
+<span id="cb125-8"><a href=""></a>  df <span class="ot">&lt;-</span> <span class="fu">rbind</span>(df, res)</span>
+<span id="cb125-9"><a href=""></a>}</span>
+<span id="cb125-10"><a href=""></a>df</span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>  numero quadrado cubo
+1      1        1    1
+2      2        4    8
+3      3        9   27
+4      4       16   64
+5      5       25  125</code></pre>
+</div>
+</div>
+</section>
+<section class="slide level2">
+<h2>Usos avançados do for</h2>
+<ul>
+<li>Combinando resultados em um objeto vazio por <strong>colunas</strong></li>
+</ul>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb127"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb127-1"><a href=""></a>df <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(<span class="at">numero =</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">5</span>)</span>
+<span id="cb127-2"><a href=""></a></span>
+<span id="cb127-3"><a href=""></a><span class="cf">for</span>(i <span class="cf">in</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">5</span>){</span>
+<span id="cb127-4"><a href=""></a>    </span>
+<span id="cb127-5"><a href=""></a>    res <span class="ot">&lt;-</span> i <span class="sc">*</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">5</span></span>
+<span id="cb127-6"><a href=""></a>    df_res <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(res)</span>
+<span id="cb127-7"><a href=""></a>    <span class="fu">colnames</span>(df_res) <span class="ot">&lt;-</span> <span class="fu">paste0</span>(<span class="st">"mult"</span>, i)</span>
+<span id="cb127-8"><a href=""></a>    df <span class="ot">&lt;-</span> <span class="fu">cbind</span>(df, df_res)</span>
+<span id="cb127-9"><a href=""></a>}</span>
+<span id="cb127-10"><a href=""></a>df</span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>  numero mult1 mult2 mult3 mult4 mult5
+1      1     1     2     3     4     5
+2      2     2     4     6     8    10
+3      3     3     6     9    12    15
+4      4     4     8    12    16    20
+5      5     5    10    15    20    25</code></pre>
+</div>
+</div>
+</section>
+<section class="slide level2">
+<h2>Funções</h2>
+<ul>
+<li><p>Uma função é um <strong>bloco de código</strong> que realiza uma tarefa específica</p></li>
+<li><p>Possui <strong>entradas</strong> (argumentos) e retorna <strong>saídas</strong> (resultados)</p></li>
+<li><p>Utilizada para evitar <strong>repetição de código</strong>, tornando-o mais <strong>organizado</strong> e <strong>reutilizável</strong></p></li>
+</ul>
+<p><img data-src="img/code_function.png" class="absolute" style="top: 340px; right: 0px; width: 400px; height: 400px; "></p>
+</section>
+<section class="slide level2">
+<h2>Estrutura de uma função</h2>
+<ul>
+<li><strong>nome_da_funcao</strong>: nome de escolha da função</li>
+<li><strong>argumentos</strong>: valores de entrada que a função recebe</li>
+<li><strong>retorno</strong>: especifica o que a função devolve (<code>return()</code>)</li>
+</ul>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb129"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb129-1"><a href=""></a><span class="co"># estrutura</span></span>
+<span id="cb129-2"><a href=""></a>nome_da_funcao <span class="ot">&lt;-</span> <span class="cf">function</span>(argumentos){</span>
+<span id="cb129-3"><a href=""></a>  <span class="co"># corpo da funcao</span></span>
+<span id="cb129-4"><a href=""></a>  <span class="co"># calculos, operacoes ou processos</span></span>
+<span id="cb129-5"><a href=""></a>  <span class="fu">return</span>(resultado)</span>
+<span id="cb129-6"><a href=""></a>}</span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section>
+<section class="slide level2">
+<h2>Exemplo de funções</h2>
+<ul>
+<li>Funções com um argumento</li>
+<li>Elevar um número ao quadrado</li>
+</ul>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb130"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb130-1"><a href=""></a><span class="co"># definicao</span></span>
+<span id="cb130-2"><a href=""></a>quadrado <span class="ot">&lt;-</span> <span class="cf">function</span>(x){</span>
+<span id="cb130-3"><a href=""></a>  <span class="fu">return</span>(x<span class="sc">^</span><span class="dv">2</span>)</span>
+<span id="cb130-4"><a href=""></a>}</span>
+<span id="cb130-5"><a href=""></a></span>
+<span id="cb130-6"><a href=""></a><span class="co"># uso</span></span>
+<span id="cb130-7"><a href=""></a><span class="fu">quadrado</span>(<span class="dv">2</span>)</span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 4</code></pre>
+</div>
+</div>
+</section>
+<section class="slide level2">
+<h2>Exemplo de funções</h2>
+<ul>
+<li>Funções com um argumento</li>
+<li>Raiz quadrada de um número</li>
+</ul>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb132"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb132-1"><a href=""></a><span class="co"># definicao</span></span>
+<span id="cb132-2"><a href=""></a>raiz <span class="ot">&lt;-</span> <span class="cf">function</span>(x){</span>
+<span id="cb132-3"><a href=""></a>  <span class="fu">return</span>(x<span class="sc">^</span>(<span class="dv">1</span><span class="sc">/</span><span class="dv">2</span>))</span>
+<span id="cb132-4"><a href=""></a>}</span>
+<span id="cb132-5"><a href=""></a></span>
+<span id="cb132-6"><a href=""></a><span class="co"># uso</span></span>
+<span id="cb132-7"><a href=""></a><span class="fu">raiz</span>(<span class="dv">4</span>)</span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 2</code></pre>
+</div>
+</div>
+</section>
+<section class="slide level2">
+<h2>Exemplo de funções</h2>
+<ul>
+<li>Funções com múltiplos argumentos</li>
+<li>Soma dois números</li>
+</ul>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb134"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb134-1"><a href=""></a><span class="co"># definicao</span></span>
+<span id="cb134-2"><a href=""></a>soma <span class="ot">&lt;-</span> <span class="cf">function</span>(a, b){</span>
+<span id="cb134-3"><a href=""></a>  <span class="fu">return</span>(a <span class="sc">+</span> b)</span>
+<span id="cb134-4"><a href=""></a>}</span>
+<span id="cb134-5"><a href=""></a></span>
+<span id="cb134-6"><a href=""></a><span class="co"># uso</span></span>
+<span id="cb134-7"><a href=""></a><span class="fu">soma</span>(<span class="dv">40</span>, <span class="dv">2</span>)</span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 42</code></pre>
+</div>
+</div>
+</section>
+<section class="slide level2">
+<h2>Exemplo de funções</h2>
+<ul>
+<li>Argumentos com valores padrão</li>
+</ul>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb136"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb136-1"><a href=""></a><span class="co"># definicao</span></span>
+<span id="cb136-2"><a href=""></a>saudacao <span class="ot">&lt;-</span> <span class="cf">function</span>(<span class="at">nome =</span> <span class="st">"Amigo"</span>){</span>
+<span id="cb136-3"><a href=""></a>  <span class="fu">return</span>(<span class="fu">paste</span>(<span class="st">"Olá,"</span>, nome))</span>
+<span id="cb136-4"><a href=""></a>}</span>
+<span id="cb136-5"><a href=""></a></span>
+<span id="cb136-6"><a href=""></a><span class="co"># uso</span></span>
+<span id="cb136-7"><a href=""></a><span class="fu">saudacao</span>()</span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] "Olá, Amigo"</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb138"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb138-1"><a href=""></a><span class="fu">saudacao</span>(<span class="st">"Maurício"</span>)</span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] "Olá, Maurício"</code></pre>
+</div>
+</div>
+</section>
+<section class="slide level2">
+<h2>Exemplo de funções</h2>
+<ul>
+<li>Função com controle de fluxo</li>
+<li>Verificar se um número é par ou ímpar</li>
+</ul>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb140"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb140-1"><a href=""></a><span class="co"># definicao</span></span>
+<span id="cb140-2"><a href=""></a>par_ou_impar <span class="ot">&lt;-</span> <span class="cf">function</span>(num){</span>
+<span id="cb140-3"><a href=""></a>  <span class="cf">if</span>(num <span class="sc">%%</span> <span class="dv">2</span> <span class="sc">==</span> <span class="dv">0</span>){</span>
+<span id="cb140-4"><a href=""></a>    <span class="fu">return</span>(<span class="st">"Par"</span>)</span>
+<span id="cb140-5"><a href=""></a>  } <span class="cf">else</span>{</span>
+<span id="cb140-6"><a href=""></a>    <span class="fu">return</span>(<span class="st">"Ímpar"</span>)</span>
+<span id="cb140-7"><a href=""></a>  }</span>
+<span id="cb140-8"><a href=""></a>}</span>
+<span id="cb140-9"><a href=""></a></span>
+<span id="cb140-10"><a href=""></a><span class="co"># uso</span></span>
+<span id="cb140-11"><a href=""></a><span class="fu">par_ou_impar</span>(<span class="dv">42</span>)</span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] "Par"</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb142"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb142-1"><a href=""></a><span class="fu">par_ou_impar</span>(<span class="dv">23</span>)</span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] "Ímpar"</code></pre>
+</div>
+</div>
+</section>
+<section class="slide level2">
+<h2>Exemplo de funções</h2>
+<ul>
+<li>Função com repetições</li>
+<li>Soma sequência de valores</li>
+</ul>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb144"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb144-1"><a href=""></a><span class="co"># definicao</span></span>
+<span id="cb144-2"><a href=""></a>soma_sequencia <span class="ot">&lt;-</span> <span class="cf">function</span>(n){</span>
+<span id="cb144-3"><a href=""></a>  total <span class="ot">&lt;-</span> <span class="dv">0</span></span>
+<span id="cb144-4"><a href=""></a>  <span class="cf">for</span>(i <span class="cf">in</span> <span class="dv">1</span><span class="sc">:</span>n){</span>
+<span id="cb144-5"><a href=""></a>    total <span class="ot">&lt;-</span> total <span class="sc">+</span> i</span>
+<span id="cb144-6"><a href=""></a>  }</span>
+<span id="cb144-7"><a href=""></a>  <span class="fu">return</span>(total)</span>
+<span id="cb144-8"><a href=""></a>}</span>
+<span id="cb144-9"><a href=""></a></span>
+<span id="cb144-10"><a href=""></a><span class="co"># uso</span></span>
+<span id="cb144-11"><a href=""></a><span class="fu">soma_sequencia</span>(<span class="dv">3</span>)</span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 6</code></pre>
+</div>
+</div>
+</section>
+<section class="slide level2">
+<h2>Exemplo de funções</h2>
+<ul>
+<li>O <code>...</code> permite passar um número indefinido de argumentos para a função</li>
+</ul>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb146"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb146-1"><a href=""></a><span class="co"># definicao</span></span>
+<span id="cb146-2"><a href=""></a>soma_variavel <span class="ot">&lt;-</span> <span class="cf">function</span>(...){</span>
+<span id="cb146-3"><a href=""></a>  <span class="fu">return</span>(<span class="fu">sum</span>(...))</span>
+<span id="cb146-4"><a href=""></a>}</span>
+<span id="cb146-5"><a href=""></a></span>
+<span id="cb146-6"><a href=""></a><span class="co"># uso</span></span>
+<span id="cb146-7"><a href=""></a><span class="fu">soma_variavel</span>(<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>, <span class="dv">4</span>)</span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 10</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb148"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb148-1"><a href=""></a><span class="co"># uso</span></span>
+<span id="cb148-2"><a href=""></a><span class="fu">soma_variavel</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">100</span>)</span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 5050</code></pre>
+</div>
+</div>
+</section>
+<section class="slide level2">
+<h2>Funções externas</h2>
+<ul>
+<li>Permite usar uma função em um script separado do script principal</li>
+<li>Carrega e executa código salvo em um arquivo de script externo</li>
+</ul>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb150"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb150-1"><a href=""></a><span class="co"># arquivo: funcoes_util.R</span></span>
+<span id="cb150-2"><a href=""></a>soma <span class="ot">&lt;-</span> <span class="cf">function</span>(a, b) {</span>
+<span id="cb150-3"><a href=""></a>  <span class="fu">return</span>(a <span class="sc">+</span> b)</span>
+<span id="cb150-4"><a href=""></a>}</span>
+<span id="cb150-5"><a href=""></a></span>
+<span id="cb150-6"><a href=""></a>multiplicacao <span class="ot">&lt;-</span> <span class="cf">function</span>(a, b) {</span>
+<span id="cb150-7"><a href=""></a>  <span class="fu">return</span>(a <span class="sc">*</span> b)</span>
+<span id="cb150-8"><a href=""></a>}</span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section>
+<section class="slide level2">
+<h2>Funções externas</h2>
+<ul>
+<li>Permite usar uma função em um script separado do script principal</li>
+<li>Carrega e executa código salvo em um arquivo de script externo</li>
+</ul>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb151"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb151-1"><a href=""></a><span class="co"># carrega as funcoes</span></span>
+<span id="cb151-2"><a href=""></a><span class="fu">source</span>(<span class="st">"funcoes_util.R"</span>)</span>
+<span id="cb151-3"><a href=""></a></span>
+<span id="cb151-4"><a href=""></a><span class="co"># uso</span></span>
+<span id="cb151-5"><a href=""></a>res_soma <span class="ot">&lt;-</span> <span class="fu">soma</span>(<span class="dv">3</span>, <span class="dv">5</span>)</span>
+<span id="cb151-6"><a href=""></a>res_soma</span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 8</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb153"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb153-1"><a href=""></a>res_multi <span class="ot">&lt;-</span> <span class="fu">multiplicacao</span>(<span class="dv">3</span>, <span class="dv">5</span>)</span>
+<span id="cb153-2"><a href=""></a>res_multi</span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 15</code></pre>
+</div>
+</div>
+</section></section>
+<section>
+<section class="title-slide slide level1 center">
+<h1>Dúvidas?</h1>
+
 </section>
 <section class="slide level2">
 <h2>Muito obrigado!</h2>
@@ -1848,11 +2114,7 @@ $c$e
 <li><a href="https://tsiqueiralab.weebly.com/">Prof.&nbsp;Tadeu Siqueira</a></li>
 <li><a href="https://leec.eco.br/">Prof.&nbsp;Miltinho</a></li>
 <li><a href="">Cleber Chaves</a></li>
-<li><a href="">Fapesp #2022/01899-6</a></li>
 </ul>
-<center>
-<img src="img/fapesp.png" style="width:70%">
-</center>
 </div><div class="column" style="width:50%;">
 <p>Contato:</p>
 <center>
