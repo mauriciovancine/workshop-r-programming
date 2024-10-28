@@ -4,6 +4,11 @@
 #' date: 2024-10-24
 #' ---
 
+# prepare r -------------------------------------------------------------
+
+# packages
+
+
 # packages ----------------------------------------------------------------
 
 # install packages
@@ -84,6 +89,7 @@ library(palmerpenguins)
 
 # remover nas
 penguins_sem_na <- na.omit(penguins)
+penguins_sem_na
 
 # explorar dados
 head(penguins_sem_na, n = 10)
@@ -127,6 +133,12 @@ m <- matrix(c(1, 3, 5, 2, 4, 6), ncol = 3, byrow = TRUE)
 m
 
 apply(m, 1, sum)
+apply(m, 1, mean)
+apply(m, 1, sd)
+
+apply(m, 2, sd)
+
+
 
 # familia apply
 # apply(X, MARGIN, FUN, ...)
@@ -219,7 +231,7 @@ tapply(penguins_sem_na$bill_length_mm, penguins_sem_na$island, sd)
 
 ### if ----
 # valor
-x <- 10
+x <- 4
 
 # condicao
 x > 5
@@ -228,7 +240,7 @@ x > 5
 if(x > 5){
     print("x é maior que 5")
 }
-
+    
 # valores
 x <- 10
 y <- 10
@@ -272,6 +284,8 @@ if(x > 10){
     print("x é maior que 10")
 } else if(x > 5){
     print("x está entre 6 e 10")
+    hist(1)
+    mean(1:5)
 } else{
     print("x é 5 ou menor")
 }
