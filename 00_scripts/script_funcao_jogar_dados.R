@@ -1,24 +1,11 @@
-quadrado <- function(i){
-    return(i^2)
-}
-
-for(i in 1:5){
-    print(quadrado(i))
-}
-
-
-jogar_dados <- function(jogadas, tamanho){
+jogar_dados <- function(jogadas, lados){
     
     ret <- NULL
     for(i in 1:jogadas){
-        ret <- c(ret, sample(1:tamanho, 1))
+        ret <- c(ret, sample(1:lados, 1))
     }
         
     return(ret)
         
 }
-
-jogar_dados(jogadas = 10, tamanho = 12)
-
-
 
