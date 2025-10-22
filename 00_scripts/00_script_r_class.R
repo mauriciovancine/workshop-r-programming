@@ -1,7 +1,7 @@
 #' ---
 #' title: manipulacao de dados e programacao em R
 #' author: mauricio vancine
-#' date: 2024-10-24
+#' date: 2025-10-29
 #' ---
 
 # prepare r -------------------------------------------------------------
@@ -48,7 +48,6 @@ library(palmerpenguins)
 # 4. graficos
 # 5. exportar resultados
 
-# codigo
 # codigo
 
 # 0. listar pacotes

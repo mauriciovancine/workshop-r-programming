@@ -2,7 +2,7 @@
 title: "Manipulação de dados e programação em R"
 subtitle: "<br><br>NT265/NE441 - Análise de dados e apresentação de gráficos usando a linguagem R"
 author: "<br>[Maurício Vancine](https://mauriciovancine.github.io/)"
-date: "10/24/2024"
+date: "10/29/2025"
 date-format: long
 license: "Licença: [CC BY-NC-SA](https://creativecommons.org/licenses/by-nc-sa/4.0/deed.pt_BR)"
 format: 
@@ -27,6 +27,19 @@ lang: pt
 library(palmerpenguins)
 penguins_sem_na <- na.omit(penguins)
 ```
+
+## Slides
+
+**Explicando os slides**
+
+<br><br><br>
+Este é um [link](https://github.com/mauriciovancine/workshop-r-landscapemetrics) no slide
+
+![](img/slides.png){.absolute width=55% right=-100 top=140}
+
+::: footer
+[Este é um link no rodapé](https://github.com/mauriciovancine/workshop-r-landscapemetrics)
+:::
 
 ## Maurício Vancine
 
@@ -58,31 +71,59 @@ penguins_sem_na <- na.omit(penguins)
 ## Análises Ecológicas no R (2022)
 
 ::::: columns
-::: {.column width="40%"}
+::: {.column width="50%"}
 <br>
-
 <center>
-<img src="img/aer.jpeg" href="https://analises-ecologicas.com/" style="width:90%"/>
+<img src="img/aer.jpeg" style="width:75%"/>
 </center>
 :::
 
-::: {.column width="60%"}
--   15 capítulos: linguagem R, tidyverse, perguntas em ecologia, análises univariadas, multivariadas e geoespaciais
+::: {.column width="50%"}
+::: {style="font-size: 80%;"}
+<br>
 
+-   **15 capítulos**: linguagem R, tidyverse, questões em ecologia, análises univariadas, multivariadas e espaciais
 -   [bookdown](https://analises-ecologicas.com/)
-
 -   [PDF](https://canal6.com.br/livreacesso/livro/analises-ecologicas-no-r/)
-
 -   [Amazon](https://www.amazon.com.br/An%C3%A1lises-ecol%C3%B3gicas-Ferdo-Rodrigues-Silva/dp/857917564X/ref=sr_1_1?keywords=9788579175640&qid=1654379366&sr=8-1)
-
--   [Código Fonte](https://github.com/paternogbc/livro_aer)
-
+-   [Code](https://github.com/paternogbc/livro_aer)
 -   [YouTube](https://www.youtube.com/channel/UCLSVSCnmvf2k6OoWZCnEO4w)
+:::
 :::
 :::::
 
 ::: footer
 [Da Silva et al. (2022)](https://analises-ecologicas.com/)
+:::
+
+## Artigo da Mata Atlântica (2024)
+
+![](img/ms_ma.png){.absolute width=60% right=400 top=100}
+![](img/ms_af_graphic.png){.absolute width=40% right=550 top=360}
+![](img/ms_ma_fig.png){.absolute width=30% right=100 top=230}
+
+::: footer
+[Vancine et al. (2024)](https://doi.org/10.1016/j.biocon.2024.110499)
+:::
+
+## Artigo da Fragmentação (2025)
+
+![](img/ms_frag.png){.absolute width=60% right=440 top=100}
+![](img/ms_frag_map.webp){.absolute width=60% right=440 top=400}
+![](img/ms_frag_fig.webp){.absolute width=50% right=-100 top=120}
+
+::: footer
+[Goncalves-Souza et al. (2025)](https://doi.org/10.1038/s41586-025-08688-7)
+:::
+
+## Artigo da Fragmentação (2025)
+
+![](img/ms_frag.png){.absolute width=60% right=440 top=100}
+![](img/ms_frag_map.webp){.absolute width=60% right=440 top=400}
+![](img/ms_frag_fig2.webp){.absolute width=50% right=-100 top=120}
+
+::: footer
+[Goncalves-Souza et al. (2025)](https://doi.org/10.1038/s41586-025-08688-7)
 :::
 
 ## Conteúdo
@@ -1299,6 +1340,8 @@ Agradecimentos:
 - [Prof. Tadeu Siqueira](https://tsiqueiralab.weebly.com/)
 - [Prof. Miltinho](https://leec.eco.br/)
 - [Cleber Chaves]()
+
+![](img/fapesp.png){.absolute width=40% right=650 top=450}
 :::
 
 ::: {.column width="50%"}
@@ -1306,7 +1349,7 @@ Contato:
 
 <center>
 [mauricio.vancine\@gmail.com]() [mauriciovancine.github.io](mauriciovancine.github.io)
-<img src="img/gif_frogs.gif" style="width:80%"/>
+<img src="img/gif_frogs.gif" style="width:75%"/>
 </center>
 :::
 :::::
