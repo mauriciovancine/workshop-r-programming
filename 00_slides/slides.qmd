@@ -1068,6 +1068,34 @@ while(x <= 10){
 
 ## Usos avançados do for
 
+- Exportar ou criar **arquivos** colando o iterador
+
+```{r}
+arquivo <- "arquivo"
+
+for(i in 1:10){
+    
+    print(paste(arquivo, i, sep = "_"))
+    
+}
+```
+
+## Usos avançados do for
+
+- Exportar ou criar **arquivos** colando o iterador
+
+```{r}
+arquivo <- "arquivo"
+
+for(i in 1:10){
+    
+    print(paste0(arquivo, i))
+    
+}
+```
+
+## Usos avançados do for
+
 - Iterando sobre **elementos** de uma lista
 - `i` assume o **valor** dos elementos
 

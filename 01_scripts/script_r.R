@@ -4,19 +4,6 @@
 #' date: 2025-10-29
 #' ---
 
-# prepare r -------------------------------------------------------------
-
-# packages
-
-
-# packages ----------------------------------------------------------------
-
-# install packages
-# install.packages(palmerpenguins)
-
-# load packages
-library(palmerpenguins)
-
 # topics ------------------------------------------------------------------
 
 # 1. revisao
@@ -359,6 +346,22 @@ while(x <= 10){
 }
 
 ### usos avancados do for ----
+
+#### paste e paste0
+
+arquivo <- "arquivo"
+
+for(i in 1:10){
+    
+    print(paste(arquivo, i, sep = "_"))
+    
+}
+
+for(i in 1:10){
+    
+    print(paste0(arquivo, i))
+    
+}
 
 #### elementos de uma lista
 prog <- c("R", "python", "julia", "Fortran")
