@@ -187,7 +187,7 @@ Sintam-se à vontade para me interromper e tirar dúvidas
 5.  Funções
 :::
 
-::: {.column width="50%\""}
+::: {.column width="50%"}
 6.  Pacotes (*packages*)
 7.  Ajuda (*help*)
 8.  Ambiente (*environment*)
@@ -252,6 +252,14 @@ dev.off()
 :::::
 
 # Dúvidas?
+
+## Script
+
+Abram o script:
+
+<br><br><br><br>
+
+`script_r.R`
 
 ## Para apresentar os próximos conceitos e funções, vamos usar dados de pinguins
 
