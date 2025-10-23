@@ -1,10 +1,9 @@
 ---
-title: "Manipulação de dados e programação em R"
-subtitle: "<br><br>NT265/NE441 - Análise de dados e apresentação de gráficos usando a linguagem R"
-author: "<br>[Maurício Vancine](https://mauriciovancine.github.io/)"
+title: "Tópicos avançados em programação em R"
+subtitle: "<br>NT265/NE441 - Análise de dados e apresentação de gráficos usando a linguagem R"
+author: "[Maurício Vancine](https://mauriciovancine.github.io/)"
 date: "10/29/2025"
 date-format: long
-license: "Licença: [CC BY-NC-SA](https://creativecommons.org/licenses/by-nc-sa/4.0/deed.pt_BR)"
 format: 
   revealjs:
     theme: [custom.scss]
@@ -1068,7 +1067,7 @@ while(x <= 10){
 
 ## Usos avançados do for
 
-- Exportar ou criar **arquivos** colando o iterador
+- Exportar ou criar **arquivos** 'colando' o iterador
 
 ```{r}
 arquivo <- "arquivo"
@@ -1082,7 +1081,7 @@ for(i in 1:10){
 
 ## Usos avançados do for
 
-- Exportar ou criar **arquivos** colando o iterador
+- Exportar ou criar **arquivos** 'colando' o iterador
 
 ```{r}
 arquivo <- "arquivo"
