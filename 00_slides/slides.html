@@ -6,8 +6,8 @@
 <script src="slides_files/libs/quarto-html/tippy.umd.min.js"></script>
 <link href="slides_files/libs/quarto-html/tippy.css" rel="stylesheet">
 <link href="slides_files/libs/quarto-html/light-border.css" rel="stylesheet">
-<link href="slides_files/libs/quarto-html/quarto-syntax-highlighting-7b89279ff1a6dce999919e0e67d4d9ec.css" rel="stylesheet" id="quarto-text-highlighting-styles"><meta charset="utf-8">
-  <meta name="generator" content="quarto-1.8.25">
+<link href="slides_files/libs/quarto-html/quarto-syntax-highlighting-c6982bbdd90c704a9b15aa23d87ad911.css" rel="stylesheet" id="quarto-text-highlighting-styles"><meta charset="utf-8">
+  <meta name="generator" content="quarto-1.9.2">
 
   <meta name="author" content="Maurício Vancine">
   <title>Tópicos avançados em programação em R</title>
@@ -226,13 +226,13 @@
 </center>
 </div><div class="column" style="width:60%;">
 <ul>
-<li><p>Ecólogo e Doutor em Ecologia</p></li>
-<li><p>Pós-Doc em Ecologia Espacial (Mathias)</p></li>
-<li><p>Ecologia Espacial</p></li>
-<li><p>Modelagem Ecológica</p></li>
-<li><p>Análise de Dados Ecológicos e Geoespaciais</p></li>
-<li><p>Ecologia e Conservação de Anfíbios</p></li>
-<li><p><em>Open source</em> [R, QGIS, GRASS GIS, GNU/Linux, …]</p></li>
+<li>Ecólogo e Doutor em Ecologia</li>
+<li>Pós-Doc em Ecologia Espacial (Mathias)</li>
+<li>Ecologia Espacial</li>
+<li>Modelagem Ecológica</li>
+<li>Análise de Dados Ecológicos e Geoespaciais</li>
+<li>Ecologia e Conservação de Anfíbios</li>
+<li><em>Open source</em> [R, QGIS, GRASS GIS, GNU/Linux, …]</li>
 </ul>
 </div></div>
 </section>
@@ -259,6 +259,30 @@
 </div></div>
 <div class="footer">
 <p><a href="https://analises-ecologicas.com/">Da Silva et al.&nbsp;(2022)</a></p>
+</div>
+</section>
+<section class="slide level2">
+<h2>Ensino de R no Brazil (2025-2026)</h2>
+<div style="font-size: 70%;">
+<p><strong>Oecologia Australis - Special Issue</strong><br>
+<em>Teaching Ecology: Challenges and Possibilities</em></p>
+</div>
+<p><strong>THE CHALLENGES AND NUANCES OF TEACHING THE R PROGRAMMING LANGUAGE TO ECOLOGISTS</strong></p>
+<div style="font-size: 55%;">
+<p>Maurício Humberto Vancine, Pavel Dodonov, Bruno Vilela, Luisa Diele-Viegas, Victor Casagrande Souza, Felipe Alvarez Silva Nunes, Ana Julia Oliveira Silva, Beatriz Milz, Cristina A. Kita, Marco A. R. Mello, Renata L. Muylaert</p>
+</div>
+<div style="font-size: 70%;">
+<ul>
+<li>R como ferramenta essencial na Ecologia</li>
+<li>Desafios no ensino para estudantes de Biologia e Ecologia</li>
+<li>Importância da infraestrutura e fundamentos antes do aprendizado</li>
+<li>Dificuldades com conceitos abstratos e interpretação de resultados</li>
+<li>Impactos da COVID-19 e da IA no ensino</li>
+<li>Formação de profissionais com fortes habilidades analíticas</li>
+</ul>
+</div>
+<div class="footer">
+<p><a href="https://revistas.ufrj.br/index.php/oa/TeachEcology">Oecologia Australis - Teaching Ecology: Challenges and Possibilities</a></p>
 </div>
 </section>
 <section class="slide level2">
@@ -437,6 +461,17 @@
 <section class="title-slide slide level1 center">
 <h1>Dúvidas?</h1>
 
+</section>
+<section class="slide level2">
+<h2>Repositório do GitHub</h2>
+<p><br></p>
+<p><a href="https://github.com/mauriciovancine/workshop-r-programming">https://github.com/mauriciovancine/workshop-r-programming</a></p>
+<center>
+<img src="img/github_logo2.png" style="width:60%">
+</center>
+<div class="footer">
+<p><a href="https://github.com/mauriciovancine/workshop-r-programming">workshop-r-programming</a></p>
+</div>
 </section>
 <section class="slide level2">
 <h2>Script</h2>
@@ -2296,80 +2331,42 @@ $c$e
       });
     </script>
     
-
     <script>
-
       // htmlwidgets need to know to resize themselves when slides are shown/hidden.
-
       // Fire the "slideenter" event (handled by htmlwidgets.js) when the current
-
       // slide changes (different for each slide format).
-
       (function () {
-
         // dispatch for htmlwidgets
-
         function fireSlideEnter() {
-
           const event = window.document.createEvent("Event");
-
           event.initEvent("slideenter", true, true);
-
           window.document.dispatchEvent(event);
-
         }
-
-    
 
         function fireSlideChanged(previousSlide, currentSlide) {
-
           fireSlideEnter();
 
-    
-
           // dispatch for shiny
-
           if (window.jQuery) {
-
             if (previousSlide) {
-
               window.jQuery(previousSlide).trigger("hidden");
-
             }
-
             if (currentSlide) {
-
               window.jQuery(currentSlide).trigger("shown");
-
             }
-
           }
-
         }
-
-    
 
         // hookup for slidy
-
         if (window.w3c_slidy) {
-
           window.w3c_slidy.add_observer(function (slide_num) {
-
             // slide_num starts at position 1
-
             fireSlideChanged(null, w3c_slidy.slides[slide_num - 1]);
-
           });
-
         }
 
-    
-
       })();
-
     </script>
-
-    
 
     <script id="quarto-html-after-body" type="application/javascript">
       window.document.addEventListener("DOMContentLoaded", function (event) {

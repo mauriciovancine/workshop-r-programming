@@ -52,17 +52,11 @@ Este é um [link](https://github.com/mauriciovancine/workshop-r-landscapemetrics
 
 ::: {.column width="60%"}
 -   Ecólogo e Doutor em Ecologia
-
 -   Pós-Doc em Ecologia Espacial (Mathias)
-
 -   Ecologia Espacial
-
 -   Modelagem Ecológica
-
 -   Análise de Dados Ecológicos e Geoespaciais
-
 -   Ecologia e Conservação de Anfíbios
-
 -   *Open source* \[R, QGIS, GRASS GIS, GNU/Linux, ...\]
 :::
 :::::
@@ -93,6 +87,32 @@ Este é um [link](https://github.com/mauriciovancine/workshop-r-landscapemetrics
 
 ::: footer
 [Da Silva et al. (2022)](https://analises-ecologicas.com/)
+:::
+
+## Ensino de R no Brazil (2025-2026)
+
+::: {style="font-size: 70%;"}
+**Oecologia Australis - Special Issue**\
+*Teaching Ecology: Challenges and Possibilities*
+:::
+
+**THE CHALLENGES AND NUANCES OF TEACHING THE R PROGRAMMING LANGUAGE TO ECOLOGISTS**
+
+::: {style="font-size: 55%;"}
+Maurício Humberto Vancine, Pavel Dodonov, Bruno Vilela, Luisa Diele-Viegas, Victor Casagrande Souza, Felipe Alvarez Silva Nunes, Ana Julia Oliveira Silva, Beatriz Milz, Cristina A. Kita, Marco A. R. Mello, Renata L. Muylaert
+:::
+
+::: {style="font-size: 70%;"}
+- R como ferramenta essencial na Ecologia
+- Desafios no ensino para estudantes de Biologia e Ecologia
+- Importância da infraestrutura e fundamentos antes do aprendizado
+- Dificuldades com conceitos abstratos e interpretação de resultados
+- Impactos da COVID-19 e da IA no ensino
+- Formação de profissionais com fortes habilidades analíticas
+:::
+
+::: footer
+[Oecologia Australis - Teaching Ecology: Challenges and Possibilities](https://revistas.ufrj.br/index.php/oa/TeachEcology)
 :::
 
 ## Artigo da Mata Atlântica (2024)
@@ -209,7 +229,6 @@ Sintam-se à vontade para me interromper e tirar dúvidas
 [Foundations of data analysis with R](https://thegraphcourses.org/courses/r-foundations-beta/topics/rstudio-projects/)
 :::
 
-
 ## Projeto R (.Rproj)
 
 Criar um projeto no RStudio
@@ -274,6 +293,20 @@ dev.off()
 :::::
 
 # Dúvidas?
+
+## Repositório do GitHub
+
+<br>
+
+[https://github.com/mauriciovancine/workshop-r-programming](https://github.com/mauriciovancine/workshop-r-programming)
+
+<center>
+<img src="img/github_logo2.png" style="width:60%"/>
+</center>
+
+::: footer
+[workshop-r-programming](https://github.com/mauriciovancine/workshop-r-programming)
+:::
 
 ## Script
 
