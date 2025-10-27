@@ -129,7 +129,7 @@ Este é um [link](https://github.com/mauriciovancine/workshop-r-landscapemetrics
 
 ::: panel-tabset
 ## Revisão
--   Revisão dos 10 principais conceitos em R
+-   Revisão dos 11 principais conceitos em R/RStudio
 -   Pseudocódigo
 
 ## Explorar dados
@@ -173,27 +173,50 @@ Sintam-se à vontade para me interromper e tirar dúvidas
 ![](img/general_comment_gandalf.jpg)
 <center/>
 
-## Revisão dos 10 principais conceitos em R
+## Revisão dos 11 principais conceitos em R
 
-<br><br>
+<br>
 
 ::::: columns
 ::: {.column width="50%"}
 1.  Console
 2.  Script
 3.  Operadores
-4.  Objetos
+4.  Atribuição/Objetos
 5.  Funções
+6.  Pacotes (*packages*)
 :::
 
 ::: {.column width="50%"}
-6.  Pacotes (*packages*)
 7.  Ajuda (*help*)
 8.  Ambiente (*environment*)
 9.  Diretório
 10. Citações
+11. Projetos no Rstudio
 :::
 :::::
+
+## Projeto R (.Rproj)
+
+-   Facilita o trabalho em múltiplos ambientes
+-   Cada projeto possui seu diretório, documentos e workspace
+-   Permite controle de versão (git e GitHub)
+
+![](img/rproject01.png){.absolute width="450" right="500" top="300"}
+![](img/rproject02.png){.absolute width="450" right="0" top="300"}
+
+::: footer
+[Foundations of data analysis with R](https://thegraphcourses.org/courses/r-foundations-beta/topics/rstudio-projects/)
+:::
+
+
+## Projeto R (.Rproj)
+
+Criar um projeto no RStudio
+
+<center>
+<img src="img/proj_rmd.gif" style="width:90%"/>
+</center>
 
 ## Pseudocódigo
 
