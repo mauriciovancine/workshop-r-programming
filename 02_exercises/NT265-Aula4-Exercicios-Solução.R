@@ -79,12 +79,12 @@ apply(penguins_na[, c(3:6)], 2, max)
 apply(penguins_na[, c(3:6)], 2, min)
 
 ## exercicio 14 ----
-# Calcule a média da massa corporal para cada espécie de pinguim
+# Calcule a média da massa corporal para cada espécie de pinguim (dica: tapply)
 tapply(penguins_na$body_mass_g, penguins_na$species, mean)
 
 ## exercicio 15 ----
 # Use a funcao 'summary' para fazer a descricao da massa corporal para cada 
-# espécie de pinguim
+# espécie de pinguim (dica: tapply)
 tapply(penguins_na$body_mass_g, penguins_na$species, summary)
 
 # programacao -------------------------------------------------------------
@@ -143,8 +143,8 @@ check_bill <- function(bill_length){
 check_bill(penguins_na$bill_length_mm[1])
 
 ## exercicio 19 ----
-# Como fazer a funcao anterior ser aplicada a todos a toda a coluna ]
-# 'bill_length_mm'? Sim, tem um apply aqui....
+# Como fazer a funcao anterior ser aplicada a todos a toda a coluna
+# 'bill_length_mm'? dica: sapply
 sapply(penguins_na$bill_length_mm, check_bill)
 
 ## exercicio 20 ----
@@ -162,7 +162,7 @@ for(i in 1:100){
     
 }
 
-## exercicio 20 ----
+## exercicio 21 ----
 # importe os 100 arquivos combinando-os em um mesmo objeto
 # dica: listar arquivos (dir), combinar (rbind)
 

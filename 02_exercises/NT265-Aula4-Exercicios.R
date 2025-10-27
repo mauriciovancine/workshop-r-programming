@@ -56,11 +56,11 @@
 # Encontre o valor mínimo e máximo de cada coluna numérica
 
 ## exercicio 14 ----
-# Calcule a média da massa corporal para cada espécie de pinguim
+# Calcule a média da massa corporal para cada espécie de pinguim (dica: tapply)
 
 ## exercicio 15 ----
 # Use a funcao 'summary' para fazer a descricao da massa corporal para cada 
-# espécie de pinguim
+# espécie de pinguim (dica: tapply)
 
 # programacao -------------------------------------------------------------
 
@@ -79,8 +79,8 @@
 # um pinguim é maior que 40 mm
 
 ## exercicio 19 ----
-# Como fazer a funcao anterior ser aplicada a todos a toda a coluna ]
-# 'bill_length_mm'? Sim, tem um apply aqui....
+# Como fazer a funcao anterior ser aplicada a todos a toda a coluna
+# 'bill_length_mm'? dica: sapply
 
 
 ## exercicio 20 ----
@@ -90,7 +90,7 @@
 # exportar (write.csv), e nomes dos arquivos (paste0)
 
 
-## exercicio 20 ----
+## exercicio 21 ----
 # importe os 100 arquivos combinando-os em um mesmo objeto
 # dica: listar arquivos (dir), combinar (rbind)
 

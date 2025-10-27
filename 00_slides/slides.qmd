@@ -4,7 +4,7 @@ subtitle: "<br>NT265/NE441 - Análise de dados e apresentação de gráficos usa
 author: "[Maurício Vancine](https://mauriciovancine.github.io/)"
 date: "10/29/2025"
 date-format: long
-format: 
+format:
   revealjs:
     theme: [custom.scss]
     slide-number: c/t
@@ -12,6 +12,7 @@ format:
     hash-type: number
     preview-links: false
     chalkboard: true
+    include-after-body: script_blank.html
     logo: "https://www.r-project.org/logo/Rlogo.svg"
     execute:
       echo: true
@@ -200,7 +201,7 @@ Sintam-se à vontade para me interromper e tirar dúvidas
 ::::: columns
 ::: {.column width="50%"}
 1.  Console
-2.  Script
+2.  Script (seções e subseções)
 3.  Operadores
 4.  Atribuição/Objetos
 5.  Funções
@@ -266,25 +267,25 @@ Criar um projeto no RStudio
 ```{r eval=FALSE}
 # codigo
 
-# 0. pacotes
+# 0. pacotes ----
 library(tidyverse)
 library(palmerpenguins)
 
-# 1. importar dados
+# 1. importar dados ----
 penguins <- penguins_raw
 penguins
 
-# 2. limpar e ajustar dados
+# 2. limpar e ajustar dados ----
 penguins_clean <- na.omit(penguins)
 penguins_clean
 
-# 3. analises estatisticas
+# 3. analises estatisticas ----
 cor.test(penguins_clean$bill_length_mm, penguins_clean$bill_depth_mm)
 
-# 4. graficos
+# 4. graficos ----
 plot(penguins_clean$bill_length_mm, penguins_clean$bill_depth_mm, pch = 20)
 
-# 5. exportar resultados
+# 5. exportar resultados ----
 png("grafico_penguins.png")
 plot(penguins_clean$bill_length_mm, penguins_clean$bill_depth_mm, pch = 20)
 dev.off()
@@ -329,14 +330,10 @@ Abram o script:
 ## palmerpenguins {.smaller}
 
 -   Dados de medidas de pinguins chamados `palmerpenguins`
-
 -   Dados coletados e disponibilizados pela [Dra. Kristen Gorman](https://www.uaf.edu/cfos/people/faculty/detail/kristen-gorman.php) e pela [Palmer Station, Antarctica LTER](https://pal.lternet.edu/), membro da [Long Term Ecological Research Network](https://lternet.edu/)
-
 -   Dois conjuntos de dados:
-
--   `penguins_raw` (dados brutos)
-
--   `penguins` (versão simplificada)
+- `penguins_raw` (dados brutos)
+- `penguins` (versão simplificada)
 
 ![](img/lter_penguins.png){.absolute width="700" height="400" right="-50" top="300"}
 
@@ -365,7 +362,7 @@ penguins_sem_na <- na.omit(penguins)
 library(palmerpenguins)
 ```
 
-![](img/culmen_depth.png){.absolute width="430" height="300" right="-30" top="425"}
+![](img/culmen_depth.png){.absolute width="430" right="-30" top="400"}
 
 ::: footer
 [palmerpenguins](https://allisonhorst.github.io/palmerpenguins/)
@@ -958,8 +955,8 @@ x > 5
 # teste
 if(x > 5){
     print("x é maior que 5")
-    } else{
-        print("x é menor ou igual a 5")
+} else{
+    print("x é menor ou igual a 5")
 }
 ```
 
@@ -975,10 +972,10 @@ if(x > 5){
 x <- 7
 if(x > 10){
     print("x é maior que 10")
-    } else if(x > 5){
-        print("x está entre 6 e 10")
-        } else{
-            print("x é 5 ou menor")
+} else if(x > 5){
+    print("x está entre 6 e 10")
+} else{
+    print("x é 5 ou menor")
 }
 ```
 
@@ -1159,8 +1156,8 @@ prog <- c("R", "python", "julia", "Fortran")
 
 for(i in prog){
     print(i)
-
-    }
+    
+}
 ```
 
 ## Usos avançados do for
@@ -1220,11 +1217,11 @@ obj
 df <- data.frame()
 
 for(i in 1:5){
-
-  q <- i^2
-  c <- i^3
-  res <- data.frame(numero = i, quadrado = q, cubo = c)
-  df <- rbind(df, res)
+    
+    q <- i^2
+    c <- i^3
+    res <- data.frame(numero = i, quadrado = q, cubo = c)
+    df <- rbind(df, res)
 }
 df
 ```
@@ -1265,9 +1262,9 @@ df
 ```{r}
 # estrutura
 nome_da_funcao <- function(argumentos){
-  # corpo da funcao
-  # calculos, operacoes ou processos
-  return(resultado)
+    # corpo da funcao
+    # calculos, operacoes ou processos
+    return(resultado)
 }
 ```
 
@@ -1279,7 +1276,7 @@ nome_da_funcao <- function(argumentos){
 ```{r}
 # definicao
 quadrado <- function(x){
-  return(x^2)
+    return(x^2)
 }
 
 # uso
@@ -1294,7 +1291,7 @@ quadrado(2)
 ```{r}
 # definicao
 raiz <- function(x){
-  return(x^(1/2))
+    return(x^(1/2))
 }
 
 # uso
@@ -1309,7 +1306,7 @@ raiz(4)
 ```{r}
 # definicao
 soma <- function(a, b){
-  return(a + b)
+    return(a + b)
 }
 
 # uso
@@ -1323,7 +1320,7 @@ soma(40, 2)
 ```{r}
 # definicao
 saudacao <- function(nome = "Amigo"){
-  return(paste("Olá,", nome))
+    return(paste("Olá,", nome))
 }
 
 # uso
@@ -1339,11 +1336,11 @@ saudacao("Maurício")
 ```{r}
 # definicao
 par_ou_impar <- function(num){
-  if(num %% 2 == 0){
-    return("Par")
-  } else{
-    return("Ímpar")
-  }
+    if(num %% 2 == 0){
+        return("Par")
+    } else{
+        return("Ímpar")
+    }
 }
 
 # uso
@@ -1359,11 +1356,11 @@ par_ou_impar(23)
 ```{r}
 # definicao
 soma_sequencia <- function(n){
-  total <- 0
-  for(i in 1:n){
-    total <- total + i
-  }
-  return(total)
+    total <- 0
+    for(i in 1:n){
+        total <- total + i
+    }
+    return(total)
 }
 
 # uso
@@ -1377,7 +1374,7 @@ soma_sequencia(3)
 ```{r}
 # definicao
 soma_variavel <- function(...){
-  return(sum(...))
+    return(sum(...))
 }
 
 # uso
@@ -1395,11 +1392,11 @@ soma_variavel(1:100)
 ```{r}
 # arquivo: funcoes_util.R
 soma <- function(a, b) {
-  return(a + b)
+    return(a + b)
 }
 
 multiplicacao <- function(a, b) {
-  return(a * b)
+    return(a * b)
 }
 ```
 
@@ -1418,6 +1415,34 @@ res_soma
 
 res_multi <- multiplicacao(3, 5)
 res_multi
+```
+
+# Desafio
+
+## Desafio
+
+Criar uma função para jogar um dado múltiplas vezes com número de lados definíveis
+
+<center>
+<img src="img/dice.jpeg" style="width:35%"/>
+</center>
+
+::: footer
+[memebase](https://memebase.cheezburger.com/tag/dice)
+:::
+
+## Desafio
+
+**Solução**
+
+```{r}
+jogar_dados <- function(jogadas, lados){
+    
+    dice_resul <- sample(lados, jogadas, replace = TRUE)
+    
+    return(dice_resul)
+        
+}
 ```
 
 # Dúvidas?
